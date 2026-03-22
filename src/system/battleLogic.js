@@ -29,16 +29,10 @@ export const battleLogic = () => {
   const [nowKilledNumber, setNowKilledNumber] = useState(0)
   const [modalTitleText, setModalTitleText] = useState("")
   const [clearGame, setClearGame] = useState(false)
-  const [enemyHpGaugeColor, setEnemyHpGaugeColor] = useState("")
-  const [playerHpGaugeColor, setPlayerHpGaugeColor] = useState("")
 
   const [plusPoint, setPlusPoint] = useState(0)
   const [modalView, setModalView] = useState()
 
-  const [canPotionBuy, setCanPotionBuy] = useState(false);
-  const [canMagicPotionBuy, setCanMagicPotionBuy] = useState(false)
-  const [canPotionSell, setCanPotionSell] = useState(true);
-  const [canMagicPotionSell, setCanMagicPotionSell] = useState(true)
   const [nextStageButton, setNextStageButton] = useState(false)
   const [stageNumber, setStageNumber] = useState(1)
   
@@ -105,8 +99,6 @@ export const battleLogic = () => {
         ...prev, hp: nextPlayerHp,
       }))
 
-      hpGaugeChangeColor(((nextEnemyHp/maxEnemyHp) * 100), true)
-      hpGaugeChangeColor(((nextPlayerHp/playerData.maxPlayerHp) * 100), false)
       if(nextPlayerHp <= 0) {
         setDefeat(true)
         setPlayerData(prev => ({
@@ -119,36 +111,16 @@ export const battleLogic = () => {
     }
   }
 
-
-  const hpGaugeChangeColor = (gauge, isEnemy) => {
-    if(isEnemy) {
-      if(gauge <= 25) {
-        setEnemyHpGaugeColor("red")
-      } else if (gauge <= 50) {
-        setEnemyHpGaugeColor("orange")
-      }
-    } else {
-      if(gauge <= 25) {
-        setPlayerHpGaugeColor("red")
-      } else if(gauge <= 50) {
-        setPlayerHpGaugeColor("orange")
-      } else {
-        setPlayerHpGaugeColor("")
-      }
-    }
-  }  
   
 
   return {
     enemyData,
     isPoison,
     isSleep,
-    enemyHpGaugeColor,
     enemyHp,
     maxEnemyHp,
     enemyDamage,
     playerData,
-    playerHpGaugeColor,
     nowKilledNumber,
     logs,
     victory,
@@ -158,32 +130,22 @@ export const battleLogic = () => {
     clearGame,
     nextStageButton,
     stageNumber,
-    canPotionBuy,
-    canMagicPotionBuy,
-    canMagicPotionSell,
     potionPrice,
     magicPotionPrice,
     targetKilledNumber,
     enemiesData,
-    canPotionSell,
     plusPoint,
     setEnemyData,
     setMaxEnemyHp,
-    setCanMagicPotionBuy,
-    setCanPotionBuy,
-    setCanMagicPotionSell,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
     setNextStageButton,
     setVictory,
-    setEnemyHpGaugeColor,
-    hpGaugeChangeColor,
     setIsPoison,
     setIsSleep,
     setEnemyHp,
     setPlayerData,
-    setCanPotionSell,
     setDefeat,
     setPlusPoint,
     setModalTitleText,

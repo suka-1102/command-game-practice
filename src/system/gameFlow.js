@@ -14,11 +14,8 @@ export const gameFlow = ({
   setMaxEnemyHp,
   setEnemyHp,
   setNowKilledNumber,
-  setEnemyHpGaugeColor,
   setIsPoison,
   setIsSleep,
-  setCanPotionBuy,
-  setCanMagicPotionBuy,
   setPlayerData,
   setPlusPoint,
   setClearGame,
@@ -45,17 +42,11 @@ export const gameFlow = ({
 
       const nowKilledNumberDefine = nowKilledNumber + 1
       setNowKilledNumber(nowKilledNumberDefine)
-      setEnemyHpGaugeColor("")
       setIsPoison(false)
       setIsSleep(false)
       // status
       const nowHaveMoneyIndex = playerData.nowHaveMoney + enemyData.money
-      if(nowHaveMoneyIndex >= 30) {
-        setCanPotionBuy(true)
-        if(nowHaveMoneyIndex >= 50) {
-          setCanMagicPotionBuy(true)
-        }
-      } 
+
       const getExperiencePoint = enemyData.experiencePoint
       setPlayerData(prev => ({
         ...prev, 

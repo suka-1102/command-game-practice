@@ -11,12 +11,10 @@ const App = () => {
     enemyData,
     isPoison,
     isSleep,
-    enemyHpGaugeColor,
     enemyHp,
     maxEnemyHp,
     enemyDamage,
     playerData,
-    playerHpGaugeColor,
     nowKilledNumber,
     logs,
     victory,
@@ -26,19 +24,12 @@ const App = () => {
     clearGame,
     nextStageButton,
     stageNumber,
-    canPotionBuy,
-    canMagicPotionBuy,
-    canPotionSell,
-    canMagicPotionSell,
     potionPrice,
     magicPotionPrice,
     targetKilledNumber,
-    enemiesData,
     plusPoint,
     setVictory,
-    hpGaugeChangeColor,
     setEnemyHp,
-    setCanPotionSell,
     setDefeat,
     damageProcess,
     damageCalculation,
@@ -46,7 +37,6 @@ const App = () => {
     setPlayerData,
     setEnemyData,
     setMaxEnemyHp,
-    setCanMagicPotionSell,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
@@ -54,15 +44,11 @@ const App = () => {
     setModalView,
     setIsPoison,
     setIsSleep,
-    setCanMagicPotionBuy,
-    setCanPotionBuy,
-    setEnemyHpGaugeColor,
     setPlusPoint,
     setModalTitleText,
   } = battleLogic()
 
   gameFlow({
-    enemiesData,
     enemyData,
     playerData,
     victory,
@@ -74,11 +60,8 @@ const App = () => {
     setMaxEnemyHp,
     setEnemyHp,
     setNowKilledNumber,
-    setEnemyHpGaugeColor,
     setIsPoison,
     setIsSleep,
-    setCanPotionBuy,
-    setCanMagicPotionBuy,
     setPlayerData,
     setPlusPoint,
     setClearGame,
@@ -105,7 +88,6 @@ const App = () => {
     modalNextStageClick,
   } = Buttons({
     stageNumber,
-    enemiesData,
     isSleep,
     enemyData,
     enemyDamage,
@@ -115,7 +97,6 @@ const App = () => {
     insertLog,
     setEnemyHp,
     setEnemyData,
-    setCanMagicPotionSell,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
@@ -125,13 +106,9 @@ const App = () => {
     damageProcess,
     setIsSleep,
     setPlayerData,
-    hpGaugeChangeColor,
-    setCanPotionSell,
     setDefeat,
     setIsPoison,
     setModalView,
-    setCanMagicPotionBuy,
-    setCanPotionBuy,
   })
   
   return (
@@ -142,14 +119,12 @@ const App = () => {
           enemyData={enemyData}
           isPoison={isPoison}
           isSleep={isSleep}
-          enemyHpGaugeColor={enemyHpGaugeColor}
           enemyHp={enemyHp}
           maxEnemyHp={maxEnemyHp}
         />
 
         <PlayerSection
           playerData={playerData}
-          playerHpGaugeColor={playerHpGaugeColor}
           nowKilledNumber={nowKilledNumber}
           logs={logs}
           targetKilledNumber={targetKilledNumber}
@@ -171,10 +146,6 @@ const App = () => {
         playerData={playerData}
         potionPrice={potionPrice}
         magicPotionPrice={magicPotionPrice}
-        canPotionBuy={canPotionBuy}
-        canMagicPotionBuy={canMagicPotionBuy}
-        canPotionSell={canPotionSell}
-        canMagicPotionSell={canMagicPotionSell}
         onModalNextButtonClick={modalNextButtonClick}
         onModalNextStageClick={modalNextStageClick}
         onSetModalView={setModalView}

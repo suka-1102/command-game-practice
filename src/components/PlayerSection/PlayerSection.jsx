@@ -2,7 +2,6 @@ import styles from './PlayerSection.module.scss';
 
 const PlayerSection = ({
   playerData,
-  playerHpGaugeColor,
   nowKilledNumber,
   targetKilledNumber,
   logs,
@@ -18,8 +17,13 @@ const PlayerSection = ({
       <h2>{playerData.name}</h2>
       <div className={styles.hpGauge}>
         <div 
-          className={`${styles.hpGaugeValue} ${styles[playerHpGaugeColor]}`} 
-          id="currentPlayerHpGauge" 
+          className={`${styles.hpGaugeValue} ${
+                      (playerData.hp / playerData.maxPlayerHp) * 100 <= 25 
+                        ? styles.red 
+                        : (playerData.hp / playerData.maxPlayerHp) * 100 <= 50 
+                          ? styles.orange 
+                          : ""
+                    }`}
           style={{
             width: `${((playerData.hp / playerData.maxPlayerHp) * 100)}%`
           }}

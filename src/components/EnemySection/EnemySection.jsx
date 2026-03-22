@@ -4,10 +4,10 @@ const EnemySection = ({
   enemyData,
   isPoison,
   isSleep,
-  enemyHpGaugeColor,
   enemyHp,
   maxEnemyHp,
 }) => {
+
 
   return (
     <section className={styles.enemy}>
@@ -17,7 +17,13 @@ const EnemySection = ({
       </h2>
       <div className={styles.hpGauge}>
         <div 
-          className={`${styles.hpGaugeValue} ${styles[enemyHpGaugeColor]}`} 
+          className={`${styles.hpGaugeValue} ${
+            (enemyHp / maxEnemyHp) * 100 <= 25 
+              ? styles.red 
+              : (enemyHp / maxEnemyHp) * 100 <= 50 
+                ? styles.orange 
+                : ""
+          }`}
           style={{
             width: `${((enemyHp / maxEnemyHp) * 100)}%`
           }}

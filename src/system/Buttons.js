@@ -12,10 +12,6 @@ export const Buttons = ({
   playerData,
   enemyData,
   enemyDamage,
-  hpGaugeChangeColor,
-  setCanPotionSell,
-  setCanMagicPotionBuy,
-  setCanPotionBuy,
   setVictory,
   setDefeat,
   setIsPoison,
@@ -24,7 +20,6 @@ export const Buttons = ({
   setMaxEnemyHp,
   enemiesData,
   stageNumber,
-  setCanMagicPotionSell,
   setStageNumber,
   setNowKilledNumber,
   setClearGame,
@@ -85,7 +80,6 @@ export const Buttons = ({
     setPlayerData(prev => ({
       ...prev, hp: newPlayerHp,
     }))
-    hpGaugeChangeColor(((newPlayerHp/playerData.maxPlayerHp) * 100), false)
     
     const nowHavePotionIndex = playerData.nowHavePotion - 1
 
@@ -97,7 +91,6 @@ export const Buttons = ({
       setPlayerData(prev => (
         {...prev, canUsePotion: false}
       ))
-      setCanPotionSell(false)
     }
 
     if(newPlayerHp <= 0){
@@ -134,7 +127,6 @@ export const Buttons = ({
       ...prev, hp:newPlayerHp ,
     }))
     
-    hpGaugeChangeColor(((newPlayerHp/playerData.maxPlayerHp) * 100), false)
     
     const nowHaveMagicPotionIndex = playerData.nowHaveMagicPotion - 1
 
@@ -188,13 +180,6 @@ export const Buttons = ({
     }
     ))
 
-    if(nowHaveMoneyLog < 50) {
-      setCanMagicPotionBuy(false)
-
-      if(nowHaveMoneyLog < 30) {
-        setCanPotionBuy(false)
-      }
-    }
   }
 
   const modalNextButtonClick = () => {
@@ -216,14 +201,6 @@ export const Buttons = ({
       canUsePotion: true,
     }
     ))
-   
-    if(nowHaveMoneyLog < 50) {
-      setCanMagicPotionBuy(false)
-
-      if(nowHaveMoneyLog < 30) {
-        setCanPotionBuy(false)
-      }
-    }
 
   }
 
@@ -238,16 +215,7 @@ export const Buttons = ({
       nowHavePotion: prev.nowHavePotion - 1
     }))
 
-    if(nowHavePotionIndex <= 0) {
-      setCanPotionSell(false)
-    }
-    if(nowHaveMoneyLog >= 30) {
-      setCanPotionBuy(true)
-      if(nowHaveMoneyLog >= 50) {
-        setCanMagicPotionBuy(true)
-      }
-    }
-    
+
   }
 
     const magicPotionSellClick = () => {
@@ -261,15 +229,6 @@ export const Buttons = ({
       }
     ))
 
-    if(nowHaveMagicPotionIndex <= 0) {
-      setCanMagicPotionSell(false)
-    }
-    if(nowHaveMoneyLog >= 30) {
-      setCanPotionBuy(true)
-      if(nowHaveMoneyLog >= 50) {
-        setCanMagicPotionBuy(true)
-      }
-    }
   }
   
 
