@@ -1,0 +1,47 @@
+.enemy {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  .enemyStatus {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    .isPoison,
+    .isSleep {
+      &.none {
+        display: none;
+      }
+    }
+  }
+}
+
+.hpGauge,
+.mpGauge {
+  border: 1px solid #777;
+  .hpGaugeValue {
+    height: 15px;
+    background-color: #6bf;
+    transition: 0.3s;
+
+    &.orange {
+      background-color: rgb(251, 171, 91);
+    }
+    &.red {
+      background-color: #f25858;
+    }
+  }
+  .mpGaugeValue {
+    height: 15px;
+    background-color: #54e768;
+  }
+}
+
+.hp,
+.mp {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  & > div:first-of-type::after {
+    content: "/";
+    margin: 0 5px;
+  }
+}

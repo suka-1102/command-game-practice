@@ -1,0 +1,102 @@
+.hpGauge,
+.mpGauge {
+  border: 1px solid #777;
+  .hpGaugeValue {
+    height: 15px;
+    background-color: #6bf;
+    transition: 0.3s;
+
+    &.orange {
+      background-color: rgb(251, 171, 91);
+    }
+    &.red {
+      background-color: #f25858;
+    }
+  }
+  .mpGaugeValue {
+    height: 15px;
+    background-color: #54e768;
+  }
+}
+
+.hp,
+.mp {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  & > div:first-of-type::after {
+    content: "/";
+    margin: 0 5px;
+  }
+}
+
+.killedNumbers {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.killedNumbers {
+  // display: flex;
+  // justify-content: center;
+  // margin-top: 10px;
+  & > div:first-of-type::after {
+    content: "/";
+    margin: 0 5px;
+  }
+}
+
+.logs {
+  border: 1px solid #777;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  line-height: 1.8;
+  height: 250px;
+  overflow: auto;
+  margin-top: 30px;
+  box-shadow: 0 0 3px 0 #777 inset;
+}
+
+.attackButtonSelect {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-template-rows: 50% 50%;
+  width: 100%;
+  column-gap: 25px;
+  row-gap: 10px;
+  justify-content: center;
+
+  .attack,
+  .fire,
+  .item,
+  .skill {
+    margin: 0 auto 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f44;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    &.deactive {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+  .fire {
+    background-color: rgb(247, 144, 76);
+  }
+  .item {
+    background-color: rgb(52, 145, 207);
+  }
+
+  .skill {
+    background-color: #57ffe9;
+  }
+}
