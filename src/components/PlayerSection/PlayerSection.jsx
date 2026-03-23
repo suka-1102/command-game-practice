@@ -11,6 +11,8 @@ const PlayerSection = ({
   onFireClick,
   onSetModalView,
 }) => {
+  
+  
   return (
   
     <section className={styles.player}>
