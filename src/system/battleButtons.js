@@ -1,4 +1,5 @@
 import { gameSetting } from "../settings/gameSetting";
+import { useState } from "react";
 
 export const BattleButtons =({
   damageCalculation,
@@ -14,14 +15,12 @@ export const BattleButtons =({
   setDefeat,
   setIsSleep,
   setIsPoison,
-  setModalView,
 }) => {
   const {
     criticalHitRate,
-    // magicPotionPrice,
-    // potionPrice,
-    // enemies,
   } = gameSetting
+
+  const [modalView, setModalView] = useState()
 
   const attackClick = () => {
     let playerDamage = damageCalculation(playerData.attack, enemyData.defence)
@@ -165,5 +164,8 @@ export const BattleButtons =({
     magicpotionClick,
     sleepClick,
     poisonClick,
+
+    modalView,
+    setModalView,
   }
 }

@@ -1,9 +1,9 @@
 import styles from './PlayerSection.module.scss';
+import { gameSetting } from '../../settings/gameSetting';
 
 const PlayerSection = ({
   playerData,
   nowKilledNumber,
-  targetKilledNumber,
   logs,
   victory,
   defeat,
@@ -11,6 +11,9 @@ const PlayerSection = ({
   onFireClick,
   onSetModalView,
 }) => {
+  const {
+    targetKilledNumber,
+  } = gameSetting;
   
   
   return (

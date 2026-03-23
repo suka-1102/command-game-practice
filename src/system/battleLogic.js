@@ -9,10 +9,7 @@ export const battleLogic = (
   const {
     damageRange,
     criticalHitRate,
-    targetKilledNumber,
     sleepRate,
-    potionPrice,
-    magicPotionPrice,
     playerStatus
   } = gameSetting
 
@@ -27,7 +24,6 @@ export const battleLogic = (
   const [victory, setVictory] = useState(false)
   const [defeat, setDefeat] = useState(false)
 
-  const [modalView, setModalView] = useState()
 
   const [isPoison, setIsPoison] = useState(false)
   const [isSleep, setIsSleep] = useState(false)
@@ -124,10 +120,6 @@ export const battleLogic = (
     logs,
     victory,
     defeat,
-    modalView,
-    potionPrice,
-    magicPotionPrice,
-    targetKilledNumber,
     setEnemyData,
     setMaxEnemyHp,
     setVictory,
@@ -139,7 +131,11 @@ export const battleLogic = (
     damageProcess,
     damageCalculation,
     insertLog,
-    setModalView,
+    // potionPrice,
+    // magicPotionPrice,
+    // targetKilledNumber,
+    // modalView,
+    // setModalView,
     // clearGame,
     // setClearGame,
     // setPlusPoint,

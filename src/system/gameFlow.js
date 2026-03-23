@@ -33,6 +33,7 @@ export const gameFlow = ({
   const [nextStageButton, setNextStageButton] = useState(false)
   const [stageNumber, setStageNumber] = useState(1)
   const [clearGame, setClearGame] = useState(false);
+  
 
   useEffect(() => {
     const enemiesDataFilter = enemies.filter(enemy => enemy.enemyStageNumber === 1)

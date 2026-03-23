@@ -19,10 +19,6 @@ const App = () => {
     logs,
     victory,
     defeat,
-    modalView,
-    potionPrice,
-    magicPotionPrice,
-    targetKilledNumber,
     setVictory,
     setEnemyHp,
     setDefeat,
@@ -32,9 +28,13 @@ const App = () => {
     setPlayerData,
     setEnemyData,
     setMaxEnemyHp,
-    setModalView,
     setIsPoison,
     setIsSleep,
+    // setModalView,
+    // modalView,
+    // potionPrice,
+    // magicPotionPrice,
+    // targetKilledNumber,
     // plusPoint,
     // setStageNumber,
     // setNowKilledNumber,
@@ -118,6 +118,8 @@ const App = () => {
     magicpotionClick,
     sleepClick,
     poisonClick,
+    setModalView,
+    modalView,
   } = BattleButtons({
       isSleep,
       playerData,
@@ -132,8 +134,6 @@ const App = () => {
       setDefeat,
       setIsSleep,
       setIsPoison,
-      setModalView,
-      
   })
 
   if (!enemyData) {
@@ -156,7 +156,6 @@ const App = () => {
           playerData={playerData}
           nowKilledNumber={nowKilledNumber}
           logs={logs}
-          targetKilledNumber={targetKilledNumber}
           victory={victory}
           defeat={defeat}
           onAttackClick={attackClick}
@@ -173,8 +172,6 @@ const App = () => {
         clearGame={clearGame}
         nextStageButton={nextStageButton}
         playerData={playerData}
-        potionPrice={potionPrice}
-        magicPotionPrice={magicPotionPrice}
         onModalNextButtonClick={modalNextButtonClick}
         onModalNextStageClick={modalNextStageClick}
         onSetModalView={setModalView}
