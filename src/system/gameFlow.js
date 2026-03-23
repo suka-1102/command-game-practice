@@ -1,36 +1,42 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { gameSetting } from '../settings/gameSetting';
 
 export const gameFlow = ({
-  enemiesData,
   enemyData,
   playerData,
   victory,
   defeat,
-  nowKilledNumber,
-  plusPoint,
-  stageNumber,
   setEnemyData,
   setMaxEnemyHp,
   setEnemyHp,
-  setNowKilledNumber,
   setIsPoison,
   setIsSleep,
   setPlayerData,
-  setPlusPoint,
-  setClearGame,
-  setModalTitleText,
-  setNextStageButton,
+  // stageNumber,
+  // setClearGame,
+  // setNextStageButton,
+  // setPlusPoint,
+  // nowKilledNumber,
+  // plusPoint,
+  // setNowKilledNumber,  
 }) => {
   const {
     firstNeedLevelUpPoint,
     targetKilledNumber,
     stageNumberIndex,
+    enemies,
   } = gameSetting;
 
+  const [plusPoint, setPlusPoint] = useState(0)
+  const [modalTitleText, setModalTitleText] = useState("")
+  const [nowKilledNumber, setNowKilledNumber] = useState(0)
+  const [nextStageButton, setNextStageButton] = useState(false)
+  const [stageNumber, setStageNumber] = useState(1)
+  const [clearGame, setClearGame] = useState(false);
+
   useEffect(() => {
-    const enemiesDataFilter = enemiesData.filter(enemy => enemy.enemyStageNumber === 1)
-    const enemyDataFirst = enemiesData[Math.floor(Math.random() * enemiesDataFilter.length)]
+    const enemiesDataFilter = enemies.filter(enemy => enemy.enemyStageNumber === 1)
+    const enemyDataFirst = enemiesDataFilter[Math.floor(Math.random() * enemiesDataFilter.length)]
 
     setEnemyData(enemyDataFirst)
     setMaxEnemyHp(enemyDataFirst.hp)
@@ -56,7 +62,8 @@ export const gameFlow = ({
       
       const needLevelUpPoint = firstNeedLevelUpPoint + plusPoint;
       // level up
-      if(playerData.nowHaveExperiencePoint >= needLevelUpPoint) {
+      const newPlayerHaveExperiencePoint = playerData.nowHaveExperiencePoint + enemyData.experiencePoint;
+      if(newPlayerHaveExperiencePoint >= needLevelUpPoint) {
         const levelUpLog = playerData.nowLevel + 1;
         setPlayerData(prev => ({
           ...prev, 
@@ -103,4 +110,16 @@ export const gameFlow = ({
     }
   },[defeat])
 
+  return { 
+    modalTitleText,
+    nowKilledNumber,
+    nextStageButton,
+    stageNumber,
+    clearGame,
+    setClearGame,
+    setStageNumber,
+    setNextStageButton,
+    setNowKilledNumber,
+
+   }
 }

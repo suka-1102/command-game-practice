@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { gameSetting } from '../settings/gameSetting';
 
-export const battleLogic = () => {
+export const battleLogic = (
+
+  
+) => {
 
   const {
     damageRange,
@@ -10,34 +13,31 @@ export const battleLogic = () => {
     sleepRate,
     potionPrice,
     magicPotionPrice,
-    enemies,
     playerStatus
   } = gameSetting
 
   const [playerData, setPlayerData] = useState(playerStatus)
-  
+  const [logs, setLogs] = useState([])
+
   const [enemyDamage, setEnemyDamage] = useState(0)
-  const [enemiesData, setEnemiesData] = useState(enemies)
   const [enemyData, setEnemyData] = useState()
   const [maxEnemyHp, setMaxEnemyHp] = useState()
   const [enemyHp, setEnemyHp] = useState(maxEnemyHp)
 
   const [victory, setVictory] = useState(false)
   const [defeat, setDefeat] = useState(false)
-  const [logs, setLogs] = useState([])
 
-  const [nowKilledNumber, setNowKilledNumber] = useState(0)
-  const [modalTitleText, setModalTitleText] = useState("")
-  const [clearGame, setClearGame] = useState(false)
-
-  const [plusPoint, setPlusPoint] = useState(0)
   const [modalView, setModalView] = useState()
 
-  const [nextStageButton, setNextStageButton] = useState(false)
-  const [stageNumber, setStageNumber] = useState(1)
-  
   const [isPoison, setIsPoison] = useState(false)
   const [isSleep, setIsSleep] = useState(false)
+
+
+  // const [clearGame, setClearGame] = useState(false)
+  // const [stageNumber, setStageNumber] = useState(1)
+  // const [nextStageButton, setNextStageButton] = useState(false)
+  // const [nowKilledNumber, setNowKilledNumber] = useState(0)
+  // const [plusPoint, setPlusPoint] = useState(0)
 
   const insertLog = (texts) => {
     setLogs(prev => {
@@ -121,38 +121,35 @@ export const battleLogic = () => {
     maxEnemyHp,
     enemyDamage,
     playerData,
-    nowKilledNumber,
     logs,
     victory,
     defeat,
     modalView,
-    modalTitleText,
-    clearGame,
-    nextStageButton,
-    stageNumber,
     potionPrice,
     magicPotionPrice,
     targetKilledNumber,
-    enemiesData,
-    plusPoint,
     setEnemyData,
     setMaxEnemyHp,
-    setStageNumber,
-    setNowKilledNumber,
-    setClearGame,
-    setNextStageButton,
     setVictory,
     setIsPoison,
     setIsSleep,
     setEnemyHp,
     setPlayerData,
     setDefeat,
-    setPlusPoint,
-    setModalTitleText,
     damageProcess,
     damageCalculation,
     insertLog,
-    setModalView
+    setModalView,
+    // clearGame,
+    // setClearGame,
+    // setPlusPoint,
+    // setNowKilledNumber,
+    // setNextStageButton,
+    // stageNumber,
+    // plusPoint,
+    // nextStageButton,
+    // nowKilledNumber,
+    // setStageNumber,
   }
 
 }

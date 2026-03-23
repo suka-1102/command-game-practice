@@ -1,36 +1,27 @@
 import { gameSetting } from "../settings/gameSetting";
 
-export const Buttons = ({
+export const BattleButtons =({
   damageCalculation,
-  insertLog,
-  setEnemyHp,
-  damageProcess,
-  isSleep,
-  setIsSleep,
-  enemyHp,
-  setPlayerData,
   playerData,
+  setEnemyHp,
+  isSleep,
+  insertLog,
   enemyData,
+  enemyHp,
   enemyDamage,
-  setVictory,
+  damageProcess,
+  setPlayerData,
   setDefeat,
+  setIsSleep,
   setIsPoison,
   setModalView,
-  setEnemyData,
-  setMaxEnemyHp,
-  enemiesData,
-  stageNumber,
-  setStageNumber,
-  setNowKilledNumber,
-  setClearGame,
-  setNextStageButton,
 }) => {
-
   const {
     criticalHitRate,
-    magicPotionPrice,
-    potionPrice,
-    } = gameSetting
+    // magicPotionPrice,
+    // potionPrice,
+    // enemies,
+  } = gameSetting
 
   const attackClick = () => {
     let playerDamage = damageCalculation(playerData.attack, enemyData.defence)
@@ -63,7 +54,6 @@ export const Buttons = ({
 
   const potionClick = () => {
     let newPlayerHp = playerData.hp + 50
-    
     if(newPlayerHp > playerData.maxPlayerHp) {
       setPlayerData(prev => ({
         ...prev, hp: playerData.maxPlayerHp,
@@ -101,7 +91,7 @@ export const Buttons = ({
     }
   }
 
-  const magicpotionClick = () => {
+    const magicpotionClick = () => {
     let newPlayerMp = playerData.mp + 20
     let newPlayerHp = playerData.hp
     if(newPlayerMp > playerData.maxPlayerMp) {
@@ -147,7 +137,6 @@ export const Buttons = ({
       }))
     }
   }
-  
 
   const poisonClick = () => {
 
@@ -169,101 +158,12 @@ export const Buttons = ({
     setModalView('')
   }
 
-    const magicPotionBuyClick = () => {
-    const nowHaveMoneyLog = playerData.nowHaveMoney - magicPotionPrice;
-
-    setPlayerData(prev => ({
-      ...prev, 
-      nowHaveMoney: prev.nowHaveMoney - magicPotionPrice,
-      nowHaveMagicPotion: prev.nowHaveMagicPotion + 1,
-      canUseMagicPotion:true,
-    }
-    ))
-
-  }
-
-  const modalNextButtonClick = () => {
-    const newEnemiesData = enemiesData.filter(enemy => enemy.enemyStageNumber === stageNumber)
-    const nextEnemy = newEnemiesData[Math.floor(Math.random() * newEnemiesData.length)]
-    setEnemyData(nextEnemy)
-    setMaxEnemyHp(nextEnemy.hp)
-    setVictory(false)
-    setEnemyHp(nextEnemy.hp)
-  }
-
-    const potionBuyClick = () => {
-    const nowHaveMoneyLog = playerData.nowHaveMoney - potionPrice
-
-    setPlayerData(prev => ({
-      ...prev, 
-      nowHaveMoney: prev.nowHaveMoney - potionPrice,
-      nowHavePotion: prev.nowHavePotion + 1,
-      canUsePotion: true,
-    }
-    ))
-
-  }
-
-
-  const potionSellClick = () =>  {
-    const nowHavePotionIndex = playerData.nowHavePotion - 1;
-    const nowHaveMoneyLog = playerData.nowHaveMoney + (potionPrice / 2)
-
-    setPlayerData(prev => ({
-      ...prev, 
-      nowHaveMoney: prev.nowHaveMoney + (potionPrice / 2),
-      nowHavePotion: prev.nowHavePotion - 1
-    }))
-
-
-  }
-
-    const magicPotionSellClick = () => {
-    const nowHaveMagicPotionIndex = playerData.nowHaveMagicPotion - 1;
-    const nowHaveMoneyLog = playerData.nowHaveMoney + (magicPotionPrice / 2)
-
-    setPlayerData(prev => (
-      {...prev, 
-        nowHaveMoney: prev.nowHaveMoney + (magicPotionPrice / 2),
-        nowHaveMagicPotion: prev.nowHaveMagicPotion - 1
-      }
-    ))
-
-  }
-  
-
-  const modalNextStageClick = () => {
-    setStageNumber(prev => prev + 1)
-    setNowKilledNumber(0)
-    const newStageNumber = stageNumber + 1;
-
-    const newEnemiesData = enemiesData.filter(enemy => enemy.enemyStageNumber === newStageNumber)
-    const nextEnemy = newEnemiesData[Math.floor(Math.random() * newEnemiesData.length)]
-    setEnemyData(nextEnemy)
-    setMaxEnemyHp(nextEnemy.hp)
-    setEnemyHp(nextEnemy.hp)
- 
-    setVictory(false)
-    setClearGame(false)
-    setNextStageButton(false)
-  }
-
-
-
-
   return {
     attackClick,
     fireClick,
     potionClick,
-    poisonClick,
-    sleepClick,
-    magicPotionBuyClick,
     magicpotionClick,
-    modalNextButtonClick,
-    potionBuyClick,
-    potionSellClick,
-    magicPotionSellClick,
-    modalNextStageClick,
+    sleepClick,
+    poisonClick,
   }
-
 }
