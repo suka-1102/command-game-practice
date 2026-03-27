@@ -1,39 +1,28 @@
 import { useState } from 'react';
 import { gameSetting } from '../settings/gameSetting';
 
-export const battleLogic = (
-
-  
-) => {
+export const battleLogic = ({
+  playerData,
+  enemyData,
+  setPlayerData,
+  setDefeat,
+  setVictory,
+  enemyHp,
+  setEnemyHp,
+}) => {
 
   const {
     damageRange,
     criticalHitRate,
     sleepRate,
-    playerStatus
   } = gameSetting
 
-  const [playerData, setPlayerData] = useState(playerStatus)
   const [logs, setLogs] = useState([])
 
   const [enemyDamage, setEnemyDamage] = useState(0)
-  const [enemyData, setEnemyData] = useState()
-  const [maxEnemyHp, setMaxEnemyHp] = useState()
-  const [enemyHp, setEnemyHp] = useState(maxEnemyHp)
-
-  const [victory, setVictory] = useState(false)
-  const [defeat, setDefeat] = useState(false)
-
 
   const [isPoison, setIsPoison] = useState(false)
   const [isSleep, setIsSleep] = useState(false)
-
-
-  // const [clearGame, setClearGame] = useState(false)
-  // const [stageNumber, setStageNumber] = useState(1)
-  // const [nextStageButton, setNextStageButton] = useState(false)
-  // const [nowKilledNumber, setNowKilledNumber] = useState(0)
-  // const [plusPoint, setPlusPoint] = useState(0)
 
   const insertLog = (texts) => {
     setLogs(prev => {
@@ -110,27 +99,27 @@ export const battleLogic = (
   
 
   return {
-    enemyData,
     isPoison,
     isSleep,
-    enemyHp,
-    maxEnemyHp,
     enemyDamage,
-    playerData,
     logs,
-    victory,
-    defeat,
-    setEnemyData,
-    setMaxEnemyHp,
-    setVictory,
     setIsPoison,
     setIsSleep,
-    setEnemyHp,
-    setPlayerData,
-    setDefeat,
     damageProcess,
     damageCalculation,
     insertLog,
+    // enemyHp,
+    // maxEnemyHp,
+    // setMaxEnemyHp,
+    // playerData,
+    // setEnemyHp,
+    // enemyData,
+    // setPlayerData,
+    // setDefeat,
+    // defeat,
+    // setEnemyData,
+    // victory,
+    // setVictory,
     // potionPrice,
     // magicPotionPrice,
     // targetKilledNumber,

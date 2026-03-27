@@ -5,47 +5,54 @@ import PlayerSection from './components/PlayerSection/PlayerSection'
 import EnemySection from './components/EnemySection/EnemySection'
 import { ModalButtons } from './system/modalButtons'
 import { BattleButtons } from './system/battleButtons'
+import { useState } from 'react';
+import { gameSetting } from './settings/gameSetting'
 
 const App = () => {
 
   const {
-    enemyData,
+    playerStatus
+  } = gameSetting
+  const [victory, setVictory] = useState(false)
+  const [defeat, setDefeat] = useState(false)
+
+  const [enemyData, setEnemyData] = useState()
+  const [playerData, setPlayerData] = useState(playerStatus)
+
+  const [maxEnemyHp, setMaxEnemyHp] = useState()
+  const [enemyHp, setEnemyHp] = useState(maxEnemyHp)
+
+
+  const {
     isPoison,
     isSleep,
-    enemyHp,
-    maxEnemyHp,
     enemyDamage,
-    playerData,
     logs,
-    victory,
-    defeat,
-    setVictory,
-    setEnemyHp,
-    setDefeat,
     damageProcess,
     damageCalculation,
     insertLog,
-    setPlayerData,
-    setEnemyData,
-    setMaxEnemyHp,
     setIsPoison,
     setIsSleep,
-    // setModalView,
-    // modalView,
-    // potionPrice,
-    // magicPotionPrice,
-    // targetKilledNumber,
-    // plusPoint,
-    // setStageNumber,
-    // setNowKilledNumber,
-    // setClearGame,
-    // setNextStageButton,
-    // setPlusPoint,
-    // nowKilledNumber,
-    // clearGame,
-    // nextStageButton,
-    // stageNumber,
-  } = battleLogic()
+    // setEnemyHp,
+    // setMaxEnemyHp,
+    // enemyHp,
+    // maxEnemyHp,
+    // setPlayerData,
+    // setEnemyData,
+    // playerData,
+    // victory,
+    // defeat,
+    // enemyData,
+    // setDefeat,
+  } = battleLogic({
+    enemyData,
+    playerData,
+    enemyHp, 
+    setEnemyHp,
+    setVictory,
+    setDefeat,
+    setPlayerData,
+  })
 
   const { 
     modalTitleText,
@@ -68,18 +75,9 @@ const App = () => {
     setIsPoison,
     setIsSleep,
     setPlayerData,
-    // setPlusPoint,
-    // plusPoint,
-    // stageNumber,
   })
 
   const {
-    // attackClick,
-    // fireClick,
-    // potionClick,
-    // poisonClick,
-    // sleepClick,
-    // magicpotionClick,
     magicPotionBuyClick,
     potionBuyClick,
     potionSellClick,
@@ -100,15 +98,7 @@ const App = () => {
     setVictory,
     setMaxEnemyHp,
     setPlayerData,
-    // damageProcess,
-    // setIsSleep,
-    // isSleep,
-    // enemyHp,
-    // damageCalculation,
-    // insertLog,
-    // setDefeat,
-    // setIsPoison,
-    // setModalView,
+
   })
 
   const {
