@@ -19,15 +19,6 @@ const App = () => {
     logs,
     victory,
     defeat,
-    modalView,
-    modalTitleText,
-    clearGame,
-    nextStageButton,
-    stageNumber,
-    potionPrice,
-    magicPotionPrice,
-    targetKilledNumber,
-    plusPoint,
     setVictory,
     setEnemyHp,
     setDefeat,
@@ -37,6 +28,31 @@ const App = () => {
     setPlayerData,
     setEnemyData,
     setMaxEnemyHp,
+    setIsPoison,
+    setIsSleep,
+    // setModalView,
+    // modalView,
+    // potionPrice,
+    // magicPotionPrice,
+    // targetKilledNumber,
+    // plusPoint,
+    // setStageNumber,
+    // setNowKilledNumber,
+    // setClearGame,
+    // setNextStageButton,
+    // setPlusPoint,
+    // nowKilledNumber,
+    // clearGame,
+    // nextStageButton,
+    // stageNumber,
+  } = battleLogic()
+
+  const { 
+    modalTitleText,
+    nowKilledNumber,
+    nextStageButton,
+    stageNumber,
+    clearGame,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
@@ -83,14 +99,47 @@ const App = () => {
     setNextStageButton,
     setVictory,
     setMaxEnemyHp,
-    damageProcess,
-    setIsSleep,
     setPlayerData,
-    setDefeat,
-    setIsPoison,
-    setModalView,
+    // damageProcess,
+    // setIsSleep,
+    // isSleep,
+    // enemyHp,
+    // damageCalculation,
+    // insertLog,
+    // setDefeat,
+    // setIsPoison,
+    // setModalView,
   })
-  
+
+  const {
+    attackClick,
+    fireClick,
+    potionClick,
+    magicpotionClick,
+    sleepClick,
+    poisonClick,
+    setModalView,
+    modalView,
+  } = BattleButtons({
+      isSleep,
+      playerData,
+      enemyData,
+      enemyHp,
+      enemyDamage,
+      damageCalculation,
+      setEnemyHp,
+      insertLog,
+      damageProcess,
+      setPlayerData,
+      setDefeat,
+      setIsSleep,
+      setIsPoison,
+  })
+
+  if (!enemyData) {
+    return <div>Loading</div>
+  }
+
   return (
     <>
       <main>

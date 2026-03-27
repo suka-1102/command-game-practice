@@ -11,6 +11,11 @@ const PlayerSection = ({
   onFireClick,
   onSetModalView,
 }) => {
+  const {
+    targetKilledNumber,
+  } = gameSetting;
+  
+  
   return (
   
     <section className={styles.player}>

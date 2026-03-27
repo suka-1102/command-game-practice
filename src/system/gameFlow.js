@@ -27,6 +27,14 @@ export const gameFlow = ({
     enemies,
   } = gameSetting;
 
+  const [plusPoint, setPlusPoint] = useState(0)
+  const [modalTitleText, setModalTitleText] = useState("")
+  const [nowKilledNumber, setNowKilledNumber] = useState(0)
+  const [nextStageButton, setNextStageButton] = useState(false)
+  const [stageNumber, setStageNumber] = useState(1)
+  const [clearGame, setClearGame] = useState(false);
+  
+
   useEffect(() => {
     const enemiesDataFilter = enemies.filter(enemy => enemy.enemyStageNumber === 1)
     const enemyDataFirst = enemiesDataFilter[Math.floor(Math.random() * enemiesDataFilter.length)]

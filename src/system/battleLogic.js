@@ -10,9 +10,6 @@ export const battleLogic = (
     damageRange,
     criticalHitRate,
     sleepRate,
-    potionPrice,
-    magicPotionPrice,
-    enemies,
     playerStatus
   } = gameSetting
 
@@ -26,18 +23,8 @@ export const battleLogic = (
 
   const [victory, setVictory] = useState(false)
   const [defeat, setDefeat] = useState(false)
-  const [logs, setLogs] = useState([])
 
-  const [nowKilledNumber, setNowKilledNumber] = useState(0)
-  const [modalTitleText, setModalTitleText] = useState("")
-  const [clearGame, setClearGame] = useState(false)
 
-  const [plusPoint, setPlusPoint] = useState(0)
-  const [modalView, setModalView] = useState()
-
-  const [nextStageButton, setNextStageButton] = useState(false)
-  const [stageNumber, setStageNumber] = useState(1)
-  
   const [isPoison, setIsPoison] = useState(false)
   const [isSleep, setIsSleep] = useState(false)
 
@@ -133,16 +120,6 @@ export const battleLogic = (
     logs,
     victory,
     defeat,
-    modalView,
-    modalTitleText,
-    clearGame,
-    nextStageButton,
-    stageNumber,
-    potionPrice,
-    magicPotionPrice,
-    targetKilledNumber,
-    enemiesData,
-    plusPoint,
     setEnemyData,
     setMaxEnemyHp,
     setVictory,
@@ -154,7 +131,21 @@ export const battleLogic = (
     damageProcess,
     damageCalculation,
     insertLog,
-    setModalView
+    // potionPrice,
+    // magicPotionPrice,
+    // targetKilledNumber,
+    // modalView,
+    // setModalView,
+    // clearGame,
+    // setClearGame,
+    // setPlusPoint,
+    // setNowKilledNumber,
+    // setNextStageButton,
+    // stageNumber,
+    // plusPoint,
+    // nextStageButton,
+    // nowKilledNumber,
+    // setStageNumber,
   }
 
 }

@@ -1,7 +1,7 @@
 import { gameSetting } from "../settings/gameSetting";
 import { useState } from "react";
 
-export const BattleButtons =({
+export const BattleButtons = ({
   damageCalculation,
   playerData,
   setEnemyHp,
@@ -15,158 +15,139 @@ export const BattleButtons =({
   setDefeat,
   setIsSleep,
   setIsPoison,
-<<<<<<< HEAD
-  setModalView,
+  // Removed setModalView from here because we define it below
 }) => {
   const {
     criticalHitRate,
-    // magicPotionPrice,
-    // potionPrice,
-    // enemies,
-  } = gameSetting
-=======
-}) => {
-  const {
-    criticalHitRate,
-  } = gameSetting
+  } = gameSetting;
 
-  const [modalView, setModalView] = useState()
->>>>>>> 7842fe3194941ae67f6c1b07794305286cc36ba5
+  // This is the "Incoming" version from your reduce_props branch
+  const [modalView, setModalView] = useState();
 
   const attackClick = () => {
-    let playerDamage = damageCalculation(playerData.attack, enemyData.defence)
-    if(Math.random() < criticalHitRate) {
+    let playerDamage = damageCalculation(playerData.attack, enemyData.defence);
+    if (Math.random() < criticalHitRate) {
       playerDamage *= 2;
-      insertLog(`<span style="color:blue;"> ${playerData.name} </span>の攻撃！クリティカルヒット！<span style="color:red;"> ${enemyData.name} </span>に ${playerDamage} のダメージ`)
-    }else {
-      insertLog(`<span style="color:blue;"> ${playerData.name}</span>の攻撃！<span style="color:red;"> ${enemyData.name} </span>に ${playerDamage} のダメージ`)
+      insertLog(`<span style="color:blue;"> ${playerData.name} </span>の攻撃！クリティカルヒット！<span style="color:red;"> ${enemyData.name} </span>に ${playerDamage} のダメージ`);
+    } else {
+      insertLog(`<span style="color:blue;"> ${playerData.name}</span>の攻撃！<span style="color:red;"> ${enemyData.name} </span>に ${playerDamage} のダメージ`);
     }
-    setEnemyHp(enemyHp - playerDamage)
-    damageProcess(playerDamage,isSleep)
-  }
+    setEnemyHp(enemyHp - playerDamage);
+    damageProcess(playerDamage, isSleep);
+  };
 
   const fireClick = () => {
-    insertLog(`<span style="color:blue;"> ${playerData.name}</span>のファイア！<span style="color:red;"> ${enemyData.name} </span>に ${playerData.fireDamage} のダメージ`)
-    setEnemyHp(enemyHp - playerData.fireDamage)
-    damageProcess(playerData.fireDamage, isSleep)
+    insertLog(`<span style="color:blue;"> ${playerData.name}</span>のファイア！<span style="color:red;"> ${enemyData.name} </span>に ${playerData.fireDamage} のダメージ`);
+    setEnemyHp(enemyHp - playerData.fireDamage);
+    damageProcess(playerData.fireDamage, isSleep);
     setPlayerData(prev => ({
-      ...prev, mp: prev.mp -5,
-    }))
+      ...prev, mp: prev.mp - 5,
+    }));
 
-    const nowPlayerMp = playerData.mp - 5
-    if(nowPlayerMp < 5) {
-
-      setPlayerData(prev => (
-        {...prev, canFire: false}
-      ))
+    const nowPlayerMp = playerData.mp - 5;
+    if (nowPlayerMp < 5) {
+      setPlayerData(prev => ({
+        ...prev, canFire: false
+      }));
     }
-  }
+  };
 
   const potionClick = () => {
-    let newPlayerHp = playerData.hp + 50
-    if(newPlayerHp > playerData.maxPlayerHp) {
+    let newPlayerHp = playerData.hp + 50;
+    if (newPlayerHp > playerData.maxPlayerHp) {
       setPlayerData(prev => ({
         ...prev, hp: playerData.maxPlayerHp,
-      }))
-      newPlayerHp = playerData.maxPlayerHp
+      }));
+      newPlayerHp = playerData.maxPlayerHp;
     } else {
       setPlayerData(prev => ({
         ...prev, hp: prev.hp + 50,
-      }))
+      }));
     }
 
-    damageProcess(0, isSleep)
-    newPlayerHp = newPlayerHp - enemyDamage
+    damageProcess(0, isSleep);
+    newPlayerHp = newPlayerHp - enemyDamage;
     setPlayerData(prev => ({
       ...prev, hp: newPlayerHp,
-    }))
-    
-    const nowHavePotionIndex = playerData.nowHavePotion - 1
+    }));
 
-    setPlayerData(prev => (
-      {...prev, nowHavePotion: prev.nowHavePotion -1}
-    ))
-    if(nowHavePotionIndex <= 0) {
-
-      setPlayerData(prev => (
-        {...prev, canUsePotion: false}
-      ))
-    }
-
-    if(newPlayerHp <= 0){
-      setDefeat(true)
+    const nowHavePotionIndex = playerData.nowHavePotion - 1;
+    setPlayerData(prev => ({
+      ...prev, nowHavePotion: prev.nowHavePotion - 1
+    }));
+    if (nowHavePotionIndex <= 0) {
       setPlayerData(prev => ({
-        ...prev, hp:0,
-      }))
+        ...prev, canUsePotion: false
+      }));
     }
-  }
 
-    const magicpotionClick = () => {
-    let newPlayerMp = playerData.mp + 20
-    let newPlayerHp = playerData.hp
-    if(newPlayerMp > playerData.maxPlayerMp) {
+    if (newPlayerHp <= 0) {
+      setDefeat(true);
+      setPlayerData(prev => ({
+        ...prev, hp: 0,
+      }));
+    }
+  };
+
+  const magicpotionClick = () => {
+    let newPlayerMp = playerData.mp + 20;
+    let newPlayerHp = playerData.hp;
+    if (newPlayerMp > playerData.maxPlayerMp) {
       setPlayerData(prev => ({
         ...prev, mp: playerData.maxPlayerMp,
-      }))
-      newPlayerMp = playerData.maxPlayerMp
+      }));
+      newPlayerMp = playerData.maxPlayerMp;
     } else {
       setPlayerData(prev => ({
         ...prev, mp: prev.mp + 20,
-      }))
+      }));
     }
-    if(newPlayerMp >= 5) {
-      setPlayerData(prev => (
-        {...prev, canFire: true}
-      ))
-      
+    if (newPlayerMp >= 5) {
+      setPlayerData(prev => ({
+        ...prev, canFire: true
+      }));
     }
- 
-    damageProcess(0)
-    newPlayerHp = newPlayerHp - enemyDamage
+
+    damageProcess(0);
+    newPlayerHp = newPlayerHp - enemyDamage;
     setPlayerData(prev => ({
-      ...prev, hp:newPlayerHp ,
-    }))
-    
-    
-    const nowHaveMagicPotionIndex = playerData.nowHaveMagicPotion - 1
+      ...prev, hp: newPlayerHp,
+    }));
 
-    setPlayerData(prev => (
-      {...prev, nowHaveMagicPotion: prev.nowHaveMagicPotion - 1}
-    ))
-    if(nowHaveMagicPotionIndex <= 0) {
-
+    const nowHaveMagicPotionIndex = playerData.nowHaveMagicPotion - 1;
+    setPlayerData(prev => ({
+      ...prev, nowHaveMagicPotion: prev.nowHaveMagicPotion - 1
+    }));
+    if (nowHaveMagicPotionIndex <= 0) {
       setPlayerData(prev => ({
         ...prev, canUseMagicPotion: false,
-      }))
+      }));
     }
 
-    if(newPlayerHp <= 0){
-      setDefeat(true)
+    if (newPlayerHp <= 0) {
+      setDefeat(true);
       setPlayerData(prev => ({
-        ...prev, hp:0 ,
-      }))
+        ...prev, hp: 0,
+      }));
     }
-  }
+  };
 
   const poisonClick = () => {
-
-    damageProcess(0,isSleep)
-    const newPlayerHp = playerData.hp - enemyDamage
+    damageProcess(0, isSleep);
+    const newPlayerHp = playerData.hp - enemyDamage;
     setPlayerData(prev => ({
-      ...prev, hp:newPlayerHp ,
-    }))
-    setIsPoison(true)
-    setModalView('skill')
-  }
+      ...prev, hp: newPlayerHp,
+    }));
+    setIsPoison(true);
+    setModalView('skill');
+  };
 
   const sleepClick = () => {
-    setIsSleep(true)
-    insertLog(`<span style="color:red;"> ${enemyData.name} </span>は眠りについた`)
-
-    damageProcess(0, true, true)
-    
-    setModalView('')
-  }
+    setIsSleep(true);
+    insertLog(`<span style="color:red;"> ${enemyData.name} </span>は眠りについた`);
+    damageProcess(0, true, true);
+    setModalView('');
+  };
 
   return {
     attackClick,
@@ -175,11 +156,7 @@ export const BattleButtons =({
     magicpotionClick,
     sleepClick,
     poisonClick,
-<<<<<<< HEAD
-=======
-
     modalView,
     setModalView,
->>>>>>> 7842fe3194941ae67f6c1b07794305286cc36ba5
-  }
-}
+  };
+};
