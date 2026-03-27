@@ -20,9 +20,14 @@ const App = () => {
     victory,
     defeat,
     modalView,
+    modalTitleText,
+    clearGame,
+    nextStageButton,
+    stageNumber,
     potionPrice,
     magicPotionPrice,
     targetKilledNumber,
+    plusPoint,
     setVictory,
     setEnemyHp,
     setDefeat,
@@ -32,27 +37,6 @@ const App = () => {
     setPlayerData,
     setEnemyData,
     setMaxEnemyHp,
-    setModalView,
-    setIsPoison,
-    setIsSleep,
-    // plusPoint,
-    // setStageNumber,
-    // setNowKilledNumber,
-    // setClearGame,
-    // setNextStageButton,
-    // setPlusPoint,
-    // nowKilledNumber,
-    // clearGame,
-    // nextStageButton,
-    // stageNumber,
-  } = battleLogic()
-
-  const { 
-    modalTitleText,
-    nowKilledNumber,
-    nextStageButton,
-    stageNumber,
-    clearGame,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
@@ -99,47 +83,14 @@ const App = () => {
     setNextStageButton,
     setVictory,
     setMaxEnemyHp,
+    damageProcess,
+    setIsSleep,
     setPlayerData,
-    // damageProcess,
-    // setIsSleep,
-    // isSleep,
-    // enemyHp,
-    // damageCalculation,
-    // insertLog,
-    // setDefeat,
-    // setIsPoison,
-    // setModalView,
+    setDefeat,
+    setIsPoison,
+    setModalView,
   })
-
-  const {
-    attackClick,
-    fireClick,
-    potionClick,
-    magicpotionClick,
-    sleepClick,
-    poisonClick,
-  } = BattleButtons({
-      isSleep,
-      playerData,
-      enemyData,
-      enemyHp,
-      enemyDamage,
-      damageCalculation,
-      setEnemyHp,
-      insertLog,
-      damageProcess,
-      setPlayerData,
-      setDefeat,
-      setIsSleep,
-      setIsPoison,
-      setModalView,
-      
-  })
-
-  if (!enemyData) {
-    return <div>Loading</div>
-  }
-
+  
   return (
     <>
       <main>
@@ -156,7 +107,6 @@ const App = () => {
           playerData={playerData}
           nowKilledNumber={nowKilledNumber}
           logs={logs}
-          targetKilledNumber={targetKilledNumber}
           victory={victory}
           defeat={defeat}
           onAttackClick={attackClick}
@@ -173,8 +123,6 @@ const App = () => {
         clearGame={clearGame}
         nextStageButton={nextStageButton}
         playerData={playerData}
-        potionPrice={potionPrice}
-        magicPotionPrice={magicPotionPrice}
         onModalNextButtonClick={modalNextButtonClick}
         onModalNextStageClick={modalNextStageClick}
         onSetModalView={setModalView}
