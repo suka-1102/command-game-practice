@@ -4,12 +4,9 @@ import useStore from '../store/stateSettings';
 
 export const battleLogic = ({
   playerData,
-  // enemyData,
   setPlayerData,
-  enemyHp,
-  setEnemyHp,
 }) => {
-  const { setVictory, setDefeat, enemyData } = useStore()
+  const { setVictory, setDefeat, enemyData, enemyHp, setEnemyHp } = useStore()
 
   const {
     damageRange,

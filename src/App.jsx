@@ -11,14 +11,12 @@ import useStore from './store/stateSettings'
 
 const App = () => {
 
-  const {maxEnemyHp, enemyData} = useStore()
+  const { enemyData} = useStore()
   const {
     playerStatus
   } = gameSetting
 
   const [playerData, setPlayerData] = useState(playerStatus)
-
-  const [enemyHp, setEnemyHp] = useState(maxEnemyHp)
 
 
   const {
@@ -32,10 +30,7 @@ const App = () => {
     setIsPoison,
     setIsSleep,
   } = battleLogic({
-    // enemyData,
     playerData,
-    enemyHp, 
-    setEnemyHp,
     setPlayerData,
   })
 
@@ -50,10 +45,7 @@ const App = () => {
     setClearGame,
     setNextStageButton,
    } = gameFlow({
-    // enemyData,
     playerData,
-    // setEnemyData,
-    setEnemyHp,
     setIsPoison,
     setIsSleep,
     setPlayerData,
@@ -68,11 +60,8 @@ const App = () => {
     modalNextStageClick,
   } = ModalButtons({
     stageNumber,
-    // enemyData,
     enemyDamage,
     playerData,
-    setEnemyHp,
-    // setEnemyData,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
@@ -93,11 +82,8 @@ const App = () => {
   } = BattleButtons({
       isSleep,
       playerData,
-      // enemyData,
-      enemyHp,
       enemyDamage,
       damageCalculation,
-      setEnemyHp,
       insertLog,
       damageProcess,
       setPlayerData,
@@ -114,10 +100,8 @@ const App = () => {
       <main>
         <div className="stage">ステージ{stageNumber}</div>
         <EnemySection
-          // enemyData={enemyData}
           isPoison={isPoison}
           isSleep={isSleep}
-          enemyHp={enemyHp}
         />
 
         <PlayerSection
