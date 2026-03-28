@@ -5,19 +5,11 @@ import PlayerSection from './components/PlayerSection/PlayerSection'
 import EnemySection from './components/EnemySection/EnemySection'
 import { ModalButtons } from './system/modalButtons'
 import { BattleButtons } from './system/battleButtons'
-import { useState } from 'react';
-import { gameSetting } from './settings/gameSetting'
 import useStore from './store/stateSettings'
 
 const App = () => {
 
   const { enemyData} = useStore()
-  const {
-    playerStatus
-  } = gameSetting
-
-  const [playerData, setPlayerData] = useState(playerStatus)
-
 
   const {
     isPoison,
@@ -30,8 +22,7 @@ const App = () => {
     setIsPoison,
     setIsSleep,
   } = battleLogic({
-    playerData,
-    setPlayerData,
+
   })
 
   const { 
@@ -45,10 +36,8 @@ const App = () => {
     setClearGame,
     setNextStageButton,
    } = gameFlow({
-    playerData,
     setIsPoison,
     setIsSleep,
-    setPlayerData,
   })
 
   const {
@@ -61,12 +50,10 @@ const App = () => {
   } = ModalButtons({
     stageNumber,
     enemyDamage,
-    playerData,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
     setNextStageButton,
-    setPlayerData,
 
   })
 
@@ -81,12 +68,10 @@ const App = () => {
     modalView,
   } = BattleButtons({
       isSleep,
-      playerData,
       enemyDamage,
       damageCalculation,
       insertLog,
       damageProcess,
-      setPlayerData,
       setIsSleep,
       setIsPoison,
   })
@@ -105,7 +90,6 @@ const App = () => {
         />
 
         <PlayerSection
-          playerData={playerData}
           nowKilledNumber={nowKilledNumber}
           logs={logs}
           onAttackClick={attackClick}
@@ -119,7 +103,6 @@ const App = () => {
         modalTitleText={modalTitleText}
         clearGame={clearGame}
         nextStageButton={nextStageButton}
-        playerData={playerData}
         onModalNextButtonClick={modalNextButtonClick}
         onModalNextStageClick={modalNextStageClick}
         onSetModalView={setModalView}

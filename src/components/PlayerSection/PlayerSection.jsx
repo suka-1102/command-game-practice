@@ -3,10 +3,8 @@ import { gameSetting } from '../../settings/gameSetting';
 import useStore from '../../store/stateSettings';
 
 const PlayerSection = ({
-  playerData,
   nowKilledNumber,
   logs,
-
   onAttackClick,
   onFireClick,
   onSetModalView,
@@ -15,7 +13,7 @@ const PlayerSection = ({
     targetKilledNumber,
   } = gameSetting;
 
-  const { victory, defeat } = useStore() 
+  const { victory, defeat, playerData } = useStore() 
   
   
   return (

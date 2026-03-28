@@ -4,12 +4,10 @@ import useStore from "../store/stateSettings";
 
 export const BattleButtons = ({
   damageCalculation,
-  playerData,
   isSleep,
   insertLog,
   enemyDamage,
   damageProcess,
-  setPlayerData,
   setIsSleep,
   setIsPoison,
 }) => {
@@ -17,7 +15,7 @@ export const BattleButtons = ({
     criticalHitRate,
   } = gameSetting;
 
-  const { setDefeat, enemyData, enemyHp, setEnemyHp } = useStore()
+  const { setDefeat, enemyData, enemyHp, setEnemyHp, playerData, setPlayerData } = useStore()
   const [modalView, setModalView] = useState();
 
   const attackClick = () => {

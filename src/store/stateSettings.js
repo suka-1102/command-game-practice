@@ -1,6 +1,18 @@
 import { create } from "zustand";
+import { gameSetting } from "../settings/gameSetting";
+
+  const {
+    playerStatus
+  } = gameSetting
 
 const useStore = create((set) => ({
+
+  playerData:playerStatus,
+  setPlayerData: (updater) => 
+    set((state) => ({
+      playerData: updater(state.playerData) 
+    })),
+
   maxEnemyHp: undefined, 
   setMaxEnemyHp: (newHp) => set({ maxEnemyHp: newHp }),
 

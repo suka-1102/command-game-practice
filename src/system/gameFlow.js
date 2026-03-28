@@ -3,13 +3,11 @@ import { gameSetting } from '../settings/gameSetting';
 import useStore from '../store/stateSettings';
 
 export const gameFlow = ({
-  playerData,
   setIsPoison,
   setIsSleep,
-  setPlayerData,
 }) => {
 
-  const { setMaxEnemyHp, victory, defeat,enemyData, setEnemyData, setEnemyHp } = useStore()
+  const { setMaxEnemyHp, victory, defeat,enemyData, setEnemyData, setEnemyHp, playerData, setPlayerData } = useStore()
   const {
     firstNeedLevelUpPoint,
     targetKilledNumber,

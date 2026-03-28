@@ -8,7 +8,6 @@ const Modal = ({
   modalTitleText,
   clearGame,
   nextStageButton,
-  playerData,
   onModalNextButtonClick,
   onModalNextStageClick,
   onSetModalView,
@@ -27,7 +26,7 @@ const Modal = ({
     magicPotionPrice,
   } = gameSetting
 
-  const { victory, defeat } = useStore()
+  const { victory, defeat, playerData } = useStore()
   return (
     <>
       <div className={`${styles.mask} ${(victory) || (defeat) || (modalView === 'skill' || modalView === 'item') ? styles.active : ''}`}></div>
