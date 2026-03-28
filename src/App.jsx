@@ -7,9 +7,11 @@ import { ModalButtons } from './system/modalButtons'
 import { BattleButtons } from './system/battleButtons'
 import { useState } from 'react';
 import { gameSetting } from './settings/gameSetting'
+import useMaxEnemyHpStore from './store/stateSettings'
 
 const App = () => {
 
+  const {maxEnemyHp} = useMaxEnemyHpStore()
   const {
     playerStatus
   } = gameSetting
@@ -19,7 +21,7 @@ const App = () => {
   const [enemyData, setEnemyData] = useState()
   const [playerData, setPlayerData] = useState(playerStatus)
 
-  const [maxEnemyHp, setMaxEnemyHp] = useState()
+  // const [maxEnemyHp, setMaxEnemyHp] = useState()
   const [enemyHp, setEnemyHp] = useState(maxEnemyHp)
 
 
@@ -33,17 +35,6 @@ const App = () => {
     insertLog,
     setIsPoison,
     setIsSleep,
-    // setEnemyHp,
-    // setMaxEnemyHp,
-    // enemyHp,
-    // maxEnemyHp,
-    // setPlayerData,
-    // setEnemyData,
-    // playerData,
-    // victory,
-    // defeat,
-    // enemyData,
-    // setDefeat,
   } = battleLogic({
     enemyData,
     playerData,
@@ -70,7 +61,7 @@ const App = () => {
     victory,
     defeat,
     setEnemyData,
-    setMaxEnemyHp,
+    // setMaxEnemyHp,
     setEnemyHp,
     setIsPoison,
     setIsSleep,
@@ -96,7 +87,7 @@ const App = () => {
     setClearGame,
     setNextStageButton,
     setVictory,
-    setMaxEnemyHp,
+    // setMaxEnemyHp,
     setPlayerData,
 
   })
@@ -139,7 +130,7 @@ const App = () => {
           isPoison={isPoison}
           isSleep={isSleep}
           enemyHp={enemyHp}
-          maxEnemyHp={maxEnemyHp}
+          // maxEnemyHp={maxEnemyHp}
         />
 
         <PlayerSection

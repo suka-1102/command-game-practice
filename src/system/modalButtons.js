@@ -1,4 +1,5 @@
 import { gameSetting } from "../settings/gameSetting";
+import useMaxEnemyHpStore from "../store/stateSettings";
 
 export const ModalButtons = ({
   // insertLog,
@@ -16,13 +17,15 @@ export const ModalButtons = ({
   playerData,
   setVictory,
   setEnemyData,
-  setMaxEnemyHp,
+  // setMaxEnemyHp,
   stageNumber,
   setStageNumber,
   setNowKilledNumber,
   setClearGame,
   setNextStageButton,
 }) => {
+
+  const { setMaxEnemyHp } = useMaxEnemyHpStore()
 
   const {
     // criticalHitRate,
