@@ -1,9 +1,9 @@
 import styles from './Modal.module.scss';
 import { gameSetting } from '../../settings/gameSetting';
+import useStore from '../../store/stateSettings';
 
 const Modal = ({
-  victory,
-  defeat,
+
   modalView,
   modalTitleText,
   clearGame,
@@ -20,13 +20,14 @@ const Modal = ({
   onMagicPotionBuyClick,
   onPotionSellClick,
   onMagicPotionSellClick,
-  // potionPrice,
-  // magicPotionPrice,
+
 }) => {
   const {
     potionPrice,
     magicPotionPrice,
   } = gameSetting
+
+  const { victory, defeat } = useStore()
   return (
     <>
       <div className={`${styles.mask} ${(victory) || (defeat) || (modalView === 'skill' || modalView === 'item') ? styles.active : ''}`}></div>

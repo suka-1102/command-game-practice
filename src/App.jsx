@@ -7,21 +7,17 @@ import { ModalButtons } from './system/modalButtons'
 import { BattleButtons } from './system/battleButtons'
 import { useState } from 'react';
 import { gameSetting } from './settings/gameSetting'
-import useMaxEnemyHpStore from './store/stateSettings'
+import useStore from './store/stateSettings'
 
 const App = () => {
 
-  const {maxEnemyHp} = useMaxEnemyHpStore()
+  const {maxEnemyHp, enemyData} = useStore()
   const {
     playerStatus
   } = gameSetting
-  const [victory, setVictory] = useState(false)
-  const [defeat, setDefeat] = useState(false)
 
-  const [enemyData, setEnemyData] = useState()
   const [playerData, setPlayerData] = useState(playerStatus)
 
-  // const [maxEnemyHp, setMaxEnemyHp] = useState()
   const [enemyHp, setEnemyHp] = useState(maxEnemyHp)
 
 
@@ -36,12 +32,10 @@ const App = () => {
     setIsPoison,
     setIsSleep,
   } = battleLogic({
-    enemyData,
+    // enemyData,
     playerData,
     enemyHp, 
     setEnemyHp,
-    setVictory,
-    setDefeat,
     setPlayerData,
   })
 
@@ -56,12 +50,9 @@ const App = () => {
     setClearGame,
     setNextStageButton,
    } = gameFlow({
-    enemyData,
+    // enemyData,
     playerData,
-    victory,
-    defeat,
-    setEnemyData,
-    // setMaxEnemyHp,
+    // setEnemyData,
     setEnemyHp,
     setIsPoison,
     setIsSleep,
@@ -77,17 +68,15 @@ const App = () => {
     modalNextStageClick,
   } = ModalButtons({
     stageNumber,
-    enemyData,
+    // enemyData,
     enemyDamage,
     playerData,
     setEnemyHp,
-    setEnemyData,
+    // setEnemyData,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
     setNextStageButton,
-    setVictory,
-    // setMaxEnemyHp,
     setPlayerData,
 
   })
@@ -104,7 +93,7 @@ const App = () => {
   } = BattleButtons({
       isSleep,
       playerData,
-      enemyData,
+      // enemyData,
       enemyHp,
       enemyDamage,
       damageCalculation,
@@ -112,7 +101,6 @@ const App = () => {
       insertLog,
       damageProcess,
       setPlayerData,
-      setDefeat,
       setIsSleep,
       setIsPoison,
   })
@@ -126,19 +114,16 @@ const App = () => {
       <main>
         <div className="stage">ステージ{stageNumber}</div>
         <EnemySection
-          enemyData={enemyData}
+          // enemyData={enemyData}
           isPoison={isPoison}
           isSleep={isSleep}
           enemyHp={enemyHp}
-          // maxEnemyHp={maxEnemyHp}
         />
 
         <PlayerSection
           playerData={playerData}
           nowKilledNumber={nowKilledNumber}
           logs={logs}
-          victory={victory}
-          defeat={defeat}
           onAttackClick={attackClick}
           onFireClick={fireClick}
           onSetModalView={setModalView}
@@ -146,8 +131,6 @@ const App = () => {
    
       </main>
       <Modal
-        victory={victory}
-        defeat={defeat}
         modalView={modalView}
         modalTitleText={modalTitleText}
         clearGame={clearGame}

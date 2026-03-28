@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { gameSetting } from '../settings/gameSetting';
+import useStore from '../store/stateSettings';
 
 export const battleLogic = ({
   playerData,
-  enemyData,
+  // enemyData,
   setPlayerData,
-  setDefeat,
-  setVictory,
   enemyHp,
   setEnemyHp,
 }) => {
+  const { setVictory, setDefeat, enemyData } = useStore()
 
   const {
     damageRange,
@@ -108,33 +108,6 @@ export const battleLogic = ({
     damageProcess,
     damageCalculation,
     insertLog,
-    // enemyHp,
-    // maxEnemyHp,
-    // setMaxEnemyHp,
-    // playerData,
-    // setEnemyHp,
-    // enemyData,
-    // setPlayerData,
-    // setDefeat,
-    // defeat,
-    // setEnemyData,
-    // victory,
-    // setVictory,
-    // potionPrice,
-    // magicPotionPrice,
-    // targetKilledNumber,
-    // modalView,
-    // setModalView,
-    // clearGame,
-    // setClearGame,
-    // setPlusPoint,
-    // setNowKilledNumber,
-    // setNextStageButton,
-    // stageNumber,
-    // plusPoint,
-    // nextStageButton,
-    // nowKilledNumber,
-    // setStageNumber,
   }
 
 }

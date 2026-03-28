@@ -1,14 +1,14 @@
 import styles from './EnemySection.module.scss';
-import useMaxEnemyHpStore from '../../store/stateSettings';
+import useStore from '../../store/stateSettings';
 
 const EnemySection = ({
-  enemyData,
+  // enemyData,
   isPoison,
   isSleep,
   enemyHp,
   // maxEnemyHp,
 }) => {
-  const { maxEnemyHp } = useMaxEnemyHpStore()
+  const { maxEnemyHp, enemyData } = useStore()
 
 
   return (

@@ -1,27 +1,18 @@
 import { useState, useEffect } from 'react';
 import { gameSetting } from '../settings/gameSetting';
-import useMaxEnemyHpStore from '../store/stateSettings';
+import useStore from '../store/stateSettings';
 
 export const gameFlow = ({
-  enemyData,
+  // enemyData,
   playerData,
-  victory,
-  defeat,
-  setEnemyData,
-  // setMaxEnemyHp,
+  // setEnemyData,
   setEnemyHp,
   setIsPoison,
   setIsSleep,
   setPlayerData,
-  // stageNumber,
-  // setClearGame,
-  // setNextStageButton,
-  // setPlusPoint,
-  // nowKilledNumber,
-  // plusPoint,
-  // setNowKilledNumber,  
 }) => {
-  const { setMaxEnemyHp } = useMaxEnemyHpStore()
+
+  const { setMaxEnemyHp, victory, defeat,enemyData, setEnemyData, } = useStore()
   const {
     firstNeedLevelUpPoint,
     targetKilledNumber,

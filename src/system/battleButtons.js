@@ -1,5 +1,6 @@
 import { gameSetting } from "../settings/gameSetting";
 import { useState } from "react";
+import useStore from "../store/stateSettings";
 
 export const BattleButtons = ({
   damageCalculation,
@@ -7,12 +8,11 @@ export const BattleButtons = ({
   setEnemyHp,
   isSleep,
   insertLog,
-  enemyData,
+  // enemyData,
   enemyHp,
   enemyDamage,
   damageProcess,
   setPlayerData,
-  setDefeat,
   setIsSleep,
   setIsPoison,
   // Removed setModalView from here because we define it below
@@ -21,6 +21,7 @@ export const BattleButtons = ({
     criticalHitRate,
   } = gameSetting;
 
+  const { setDefeat, enemyData } = useStore()
   // This is the "Incoming" version from your reduce_props branch
   const [modalView, setModalView] = useState();
 

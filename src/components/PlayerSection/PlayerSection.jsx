@@ -1,12 +1,12 @@
 import styles from './PlayerSection.module.scss';
 import { gameSetting } from '../../settings/gameSetting';
+import useStore from '../../store/stateSettings';
 
 const PlayerSection = ({
   playerData,
   nowKilledNumber,
   logs,
-  victory,
-  defeat,
+
   onAttackClick,
   onFireClick,
   onSetModalView,
@@ -14,6 +14,8 @@ const PlayerSection = ({
   const {
     targetKilledNumber,
   } = gameSetting;
+
+  const { victory, defeat } = useStore() 
   
   
   return (

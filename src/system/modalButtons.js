@@ -1,23 +1,12 @@
 import { gameSetting } from "../settings/gameSetting";
-import useMaxEnemyHpStore from "../store/stateSettings";
+import useStore from "../store/stateSettings";
 
 export const ModalButtons = ({
-  // insertLog,
-  // damageProcess,
-  // isSleep,
-  // setIsSleep,
-  // enemyData,
-  // enemyDamage,
-  // setIsPoison,
-  // setModalView,
-  // enemyHp,
-  // setDefeat,
   setEnemyHp,
   setPlayerData,
   playerData,
-  setVictory,
-  setEnemyData,
-  // setMaxEnemyHp,
+  // setVictory,
+  // setEnemyData,
   stageNumber,
   setStageNumber,
   setNowKilledNumber,
@@ -25,7 +14,7 @@ export const ModalButtons = ({
   setNextStageButton,
 }) => {
 
-  const { setMaxEnemyHp } = useMaxEnemyHpStore()
+  const { setMaxEnemyHp, setVictory, setEnemyData } = useStore()
 
   const {
     // criticalHitRate,
