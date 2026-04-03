@@ -54,6 +54,9 @@ const useStore = create((set, get) => ({
   enemyDamage: 0,
   setEnemyDamage: (damage) => set({ enemyDamage: damage }),
 
+  modalView: 0,
+  setModalView: (damage) => set({ modalView: damage }),
+
   logs: [],
   insertLog: (text) => set((state) => {
     const newIndex = state.logs.length + 1;

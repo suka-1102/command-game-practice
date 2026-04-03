@@ -5,9 +5,6 @@ import { BattleButtons } from '../../system/battleButtons';
 
 const PlayerSection = ({
   nowKilledNumber,
-  // onAttackClick,
-  // onFireClick,
-  onSetModalView,
 }) => {
   const {
     targetKilledNumber,
@@ -18,7 +15,7 @@ const PlayerSection = ({
   const { 
     victory, defeat, 
     playerData,
-    logs, 
+    logs, setModalView
   } = useStore() 
   
   
@@ -86,10 +83,10 @@ const PlayerSection = ({
           <button className={`${styles.fire} ${((victory || defeat) || !playerData.canFire) ? styles.deactive : ''}`} onClick={fireClick}>ファイア</button>
         </li>
         <li>
-          <button className={`${styles.skill} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => onSetModalView('skill')}>スキル</button>
+          <button className={`${styles.skill} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => setModalView('skill')}>スキル</button>
         </li>
         <li>
-          <button className={`${styles.item} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => onSetModalView('item')}>アイテム</button>
+          <button className={`${styles.item} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => setModalView('item')}>アイテム</button>
         </li>
       </ul> 
     </section>

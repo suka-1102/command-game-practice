@@ -20,10 +20,7 @@ const App = () => {
     setNowKilledNumber,
     setClearGame,
     setNextStageButton,
-   } = gameFlow({
-    // setIsPoison,
-    // setIsSleep,
-  })
+   } = gameFlow()
 
   const {
     magicPotionBuyClick,
@@ -34,7 +31,6 @@ const App = () => {
     modalNextStageClick,
   } = ModalButtons({
     stageNumber,
-    // enemyDamage,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
@@ -43,14 +39,10 @@ const App = () => {
   })
 
   const {
-    // attackClick,
-    // fireClick,
     potionClick,
     magicpotionClick,
     sleepClick,
     poisonClick,
-    setModalView,
-    modalView,
   } = BattleButtons()
 
   if (!enemyData) {
@@ -62,26 +54,19 @@ const App = () => {
       <main>
         <div className="stage">ステージ{stageNumber}</div>
         <EnemySection
-          // isPoison={isPoison}
-          // isSleep={isSleep}
         />
 
         <PlayerSection
           nowKilledNumber={nowKilledNumber}
-          // onAttackClick={attackClick}
-          // onFireClick={fireClick}
-          onSetModalView={setModalView}
         />
    
       </main>
       <Modal
-        modalView={modalView}
         modalTitleText={modalTitleText}
         clearGame={clearGame}
         nextStageButton={nextStageButton}
         onModalNextButtonClick={modalNextButtonClick}
         onModalNextStageClick={modalNextStageClick}
-        onSetModalView={setModalView}
         onPotionClick={potionClick}
         onMagicPotionClick={magicpotionClick}
         onPoisonClick={poisonClick}

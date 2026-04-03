@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import { gameSetting } from '../settings/gameSetting';
 import useStore from '../store/stateSettings';
 
-export const gameFlow = ({
-  // setIsPoison,
-  // setIsSleep,
-}) => {
+export const gameFlow = () => {
 
   const { 
     victory, defeat,
