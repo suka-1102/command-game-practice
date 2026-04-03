@@ -1,4 +1,3 @@
-import { battleLogic } from './system/battleLogic'
 import { gameFlow } from './system/gameFlow'
 import Modal from './components/Modal/Modal'
 import PlayerSection from './components/PlayerSection/PlayerSection'
@@ -11,20 +10,6 @@ const App = () => {
 
   const { enemyData} = useStore()
 
-  const {
-    isPoison,
-    isSleep,
-    enemyDamage,
-    logs,
-    damageProcess,
-    damageCalculation,
-    insertLog,
-    setIsPoison,
-    setIsSleep,
-  } = battleLogic({
-
-  })
-
   const { 
     modalTitleText,
     nowKilledNumber,
@@ -36,8 +21,8 @@ const App = () => {
     setClearGame,
     setNextStageButton,
    } = gameFlow({
-    setIsPoison,
-    setIsSleep,
+    // setIsPoison,
+    // setIsSleep,
   })
 
   const {
@@ -49,7 +34,7 @@ const App = () => {
     modalNextStageClick,
   } = ModalButtons({
     stageNumber,
-    enemyDamage,
+    // enemyDamage,
     setStageNumber,
     setNowKilledNumber,
     setClearGame,
@@ -58,23 +43,15 @@ const App = () => {
   })
 
   const {
-    attackClick,
-    fireClick,
+    // attackClick,
+    // fireClick,
     potionClick,
     magicpotionClick,
     sleepClick,
     poisonClick,
     setModalView,
     modalView,
-  } = BattleButtons({
-      isSleep,
-      enemyDamage,
-      damageCalculation,
-      insertLog,
-      damageProcess,
-      setIsSleep,
-      setIsPoison,
-  })
+  } = BattleButtons()
 
   if (!enemyData) {
     return <div>Loading</div>
@@ -85,15 +62,14 @@ const App = () => {
       <main>
         <div className="stage">ステージ{stageNumber}</div>
         <EnemySection
-          isPoison={isPoison}
-          isSleep={isSleep}
+          // isPoison={isPoison}
+          // isSleep={isSleep}
         />
 
         <PlayerSection
           nowKilledNumber={nowKilledNumber}
-          logs={logs}
-          onAttackClick={attackClick}
-          onFireClick={fireClick}
+          // onAttackClick={attackClick}
+          // onFireClick={fireClick}
           onSetModalView={setModalView}
         />
    

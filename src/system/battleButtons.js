@@ -1,21 +1,21 @@
 import { gameSetting } from "../settings/gameSetting";
 import { useState } from "react";
 import useStore from "../store/stateSettings";
+import { damageCalculation } from "../store/stateSettings";
 
-export const BattleButtons = ({
-  damageCalculation,
-  isSleep,
-  insertLog,
-  enemyDamage,
-  damageProcess,
-  setIsSleep,
-  setIsPoison,
-}) => {
+export const BattleButtons = () => {
   const {
     criticalHitRate,
   } = gameSetting;
 
-  const { setDefeat, enemyData, enemyHp, setEnemyHp, playerData, setPlayerData } = useStore()
+  const { 
+    setDefeat,
+    enemyData, enemyHp, setEnemyHp, 
+    playerData, setPlayerData, 
+    isSleep, setIsSleep, setIsPoison,
+    insertLog,
+    enemyDamage, damageProcess,
+  } = useStore()
   const [modalView, setModalView] = useState();
 
   const attackClick = () => {
@@ -26,6 +26,7 @@ export const BattleButtons = ({
     } else {
       insertLog(`<span style="color:blue;"> ${playerData.name}</span>の攻撃！<span style="color:red;"> ${enemyData.name} </span>に ${playerDamage} のダメージ`);
     }
+    
     setEnemyHp(enemyHp - playerDamage);
     damageProcess(playerDamage, isSleep);
   };

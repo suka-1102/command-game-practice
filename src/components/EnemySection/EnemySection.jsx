@@ -3,9 +3,9 @@ import useStore from '../../store/stateSettings';
 
 const EnemySection = ({
   isPoison,
-  isSleep,
+  // isSleep,
 }) => {
-  const { maxEnemyHp, enemyData, enemyHp } = useStore()
+  const { maxEnemyHp, enemyData, enemyHp, isSleep } = useStore()
   
 
 

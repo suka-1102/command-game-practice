@@ -1,19 +1,25 @@
 import styles from './PlayerSection.module.scss';
 import { gameSetting } from '../../settings/gameSetting';
 import useStore from '../../store/stateSettings';
+import { BattleButtons } from '../../system/battleButtons';
 
 const PlayerSection = ({
   nowKilledNumber,
-  logs,
-  onAttackClick,
-  onFireClick,
+  // onAttackClick,
+  // onFireClick,
   onSetModalView,
 }) => {
   const {
     targetKilledNumber,
   } = gameSetting;
 
-  const { victory, defeat, playerData } = useStore() 
+  const { attackClick, fireClick } = BattleButtons();
+
+  const { 
+    victory, defeat, 
+    playerData,
+    logs, 
+  } = useStore() 
   
   
   return (
@@ -74,10 +80,10 @@ const PlayerSection = ({
 
       <ul className={styles.attackButtonSelect}>
         <li>
-          <button className={`${styles.attack} ${(victory || defeat) ? styles.deactive : ''}`} onClick={onAttackClick}>攻撃する</button>
+          <button className={`${styles.attack} ${(victory || defeat) ? styles.deactive : ''}`} onClick={attackClick}>攻撃する</button>
         </li>
         <li>
-          <button className={`${styles.fire} ${((victory || defeat) || !playerData.canFire) ? styles.deactive : ''}`} onClick={onFireClick}>ファイア</button>
+          <button className={`${styles.fire} ${((victory || defeat) || !playerData.canFire) ? styles.deactive : ''}`} onClick={fireClick}>ファイア</button>
         </li>
         <li>
           <button className={`${styles.skill} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => onSetModalView('skill')}>スキル</button>
