@@ -2,7 +2,10 @@ import styles from './EnemySection.module.scss';
 import useStore from '../../store/stateSettings';
 
 const EnemySection = () => {
-  const { maxEnemyHp, enemyData, enemyHp, isSleep, isPoison } = useStore()
+  const { 
+    maxEnemyHp, enemyData, enemyHp, 
+    isSleep, isPoison 
+  } = useStore()
   
   return (
     <section className={styles.enemy}>

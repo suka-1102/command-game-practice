@@ -82,7 +82,7 @@ export const BattleButtons = () => {
     }
   };
 
-  const magicpotionClick = () => {
+  const magicPotionClick = () => {
     let newPlayerMp = playerData.mp + 20;
     let newPlayerHp = playerData.hp;
     if (newPlayerMp > playerData.maxPlayerMp) {
@@ -146,7 +146,7 @@ export const BattleButtons = () => {
     attackClick,
     fireClick,
     potionClick,
-    magicpotionClick,
+    magicPotionClick,
     sleepClick,
     poisonClick,
   };

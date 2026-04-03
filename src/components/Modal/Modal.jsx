@@ -2,18 +2,18 @@ import styles from './Modal.module.scss';
 import { gameSetting } from '../../settings/gameSetting';
 import useStore from '../../store/stateSettings';
 import { ModalButtons } from '../../system/modalButtons';
+import { BattleButtons } from '../../system/battleButtons';
 
 const Modal = ({
   modalTitleText,
-  onModalNextButtonClick,
-  onModalNextStageClick,
-  onPotionClick,
-  onMagicPotionClick,
-  onPoisonClick,
-  onSleepClick,
-  onPotionBuyClick,
-  onPotionSellClick,
-  onMagicPotionSellClick,
+  // onModalNextButtonClick,
+  // onModalNextStageClick,
+  // onPotionClick,
+  // onMagicPotionClick,
+  // onPoisonClick,
+  // onSleepClick,
+  // onPotionBuyClick,
+  // onPotionSellClick,
 
 }) => {
   const {
@@ -21,26 +21,45 @@ const Modal = ({
     magicPotionPrice,
   } = gameSetting
 
-  const { magicPotionBuyClick } = ModalButtons()
+  const { 
+    magicPotionBuyClick, 
+    modalNextButtonClick,
+    potionBuyClick,
+    potionSellClick,
+    modalNextStageClick,
+    magicPotionSellClick
 
-  const { victory, defeat,clearGame, playerData,modalView, setModalView,nextStageButton } = useStore()
+  } = ModalButtons()
+
+  const {
+    potionClick,
+    magicPotionClick,
+    poisonClick,
+    sleepClick
+  } = BattleButtons()
+
+  const { 
+    victory, defeat,clearGame, 
+    playerData,
+    modalView, setModalView,nextStageButton 
+  } = useStore()
   return (
     <>
       <div className={`${styles.mask} ${(victory) || (defeat) || (modalView === 'skill' || modalView === 'item') ? styles.active : ''}`}></div>
       <div className={`${styles.modal} ${(victory) || (defeat) || (modalView === 'skill' || modalView === 'item') ? styles.active : ''}`}>
         <div className={`${styles.modalTitle} ${(modalView === 'shopSelect' || modalView === 'skill' || modalView === 'item' || modalView === 'buy' || modalView === 'sell') ? styles.hidden : ''}`} >{modalTitleText}</div>
-        <a onClick={onModalNextButtonClick} className={`${styles.modalNextButton} ${(defeat) || (clearGame) || (modalView === 'shopSelect' || modalView === 'skill' || modalView === 'item' || modalView === 'buy' || modalView === 'sell') ? styles.hidden : ''}`}>次へ進む</a>
+        <a onClick={modalNextButtonClick} className={`${styles.modalNextButton} ${(defeat) || (clearGame) || (modalView === 'shopSelect' || modalView === 'skill' || modalView === 'item' || modalView === 'buy' || modalView === 'sell') ? styles.hidden : ''}`}>次へ進む</a>
         <a onClick={() => setModalView('shopSelect')} className={`${styles.modalShopButton} ${(defeat) || (clearGame) || (modalView === 'shopSelect' || modalView === 'skill' || modalView === 'item' || modalView === 'buy' || modalView === 'sell') ? styles.hidden : ''}`}>ショップ</a>
-        <a onClick={onModalNextStageClick} className={`${styles.modalNextStageClick} ${(!nextStageButton) ? styles.hidden : ''}`}>次のステージへ</a>
+        <a onClick={modalNextStageClick} className={`${styles.modalNextStageClick} ${(!nextStageButton) ? styles.hidden : ''}`}>次のステージへ</a>
         <ul className={`${styles.itemLists} ${(modalView !== 'item') ? styles.none : ''}`}>
-          <li className={`${styles.potion} ${(playerData.canUsePotion) ? '' : styles.deactive}`} onClick={onPotionClick}>ポーション ×{playerData.nowHavePotion}</li>
-          <li className={`${styles.magicPotion} ${(playerData.canUseMagicPotion) ? '' : styles.deactive}`} onClick={onMagicPotionClick}>マジックポーション ×{playerData.nowHaveMagicPotion}</li>
+          <li className={`${styles.potion} ${(playerData.canUsePotion) ? '' : styles.deactive}`} onClick={potionClick}>ポーション ×{playerData.nowHavePotion}</li>
+          <li className={`${styles.magicPotion} ${(playerData.canUseMagicPotion) ? '' : styles.deactive}`} onClick={magicPotionClick}>マジックポーション ×{playerData.nowHaveMagicPotion}</li>
           <li className={styles.ItemBack} onClick={() => setModalView('')}>戻る</li>
         </ul>
 
         <ul className={`${styles.skillLists} ${(modalView !== 'skill') ? styles.none : ''}`}>
-          <li className={`${styles.poison} ${(!playerData.canUsePoison) ? styles.deactive : ''}`} onClick={onPoisonClick}>ポイズン</li>
-          <li className={`${styles.sleep} ${(!playerData.canUseSleep) ? styles.deactive : ''}`} onClick={onSleepClick}>スリープ</li>
+          <li className={`${styles.poison} ${(!playerData.canUsePoison) ? styles.deactive : ''}`} onClick={poisonClick}>ポイズン</li>
+          <li className={`${styles.sleep} ${(!playerData.canUseSleep) ? styles.deactive : ''}`} onClick={sleepClick}>スリープ</li>
           <li className={styles.SkillBack} onClick={() => setModalView('')}>戻る</li>
         </ul>
 
@@ -54,7 +73,7 @@ const Modal = ({
           <div className={styles.playerMoney}>
             所持金: {playerData.nowHaveMoney} ¥
           </div>
-          <li className={styles.potionBuy} >ポーション　{potionPrice}＄ 　所持数：{playerData.nowHavePotion}<button className={`${styles.potionBuy} ${(playerData.nowHaveMoney < potionPrice) ? styles.deactive : ''}`} onClick={onPotionBuyClick}>買う</button></li>
+          <li className={styles.potionBuy} >ポーション　{potionPrice}＄ 　所持数：{playerData.nowHavePotion}<button className={`${styles.potionBuy} ${(playerData.nowHaveMoney < potionPrice) ? styles.deactive : ''}`} onClick={potionBuyClick}>買う</button></li>
           <li className={styles.magicPotionBuy}>マジックポーション {magicPotionPrice}$ 所持数：{playerData.nowHaveMagicPotion}<button className={`${styles.magicPotionBuy} ${(playerData.nowHaveMoney < magicPotionPrice) ? styles.deactive : ''}`} onClick={magicPotionBuyClick}>買う</button></li>
           <li className={styles.ItemBack} onClick={() => setModalView('')}>戻る</li>
         </ul>
@@ -62,8 +81,8 @@ const Modal = ({
           <div className={styles.playerMoney}>
             所持金: {playerData.nowHaveMoney} ¥
           </div>
-          <li className={styles.potionBuy} >ポーション {potionPrice / 2}＄　所持数：{playerData.nowHavePotion} <button className={`${styles.potionSell} ${(playerData.nowHavePotion <= 0) ? styles.deactive : ''}`} onClick={onPotionSellClick}>売る</button></li>
-          <li className={styles.magicPotionBuy}>マジックポーション {magicPotionPrice / 2}$　所持数：{playerData.nowHaveMagicPotion} <button className={`${styles.magicPotionSell} ${(playerData.nowHaveMagicPotion <= 0) ? styles.deactive : ''}`} onClick={onMagicPotionSellClick}>売る</button></li>
+          <li className={styles.potionBuy} >ポーション {potionPrice / 2}＄　所持数：{playerData.nowHavePotion} <button className={`${styles.potionSell} ${(playerData.nowHavePotion <= 0) ? styles.deactive : ''}`} onClick={potionSellClick}>売る</button></li>
+          <li className={styles.magicPotionBuy}>マジックポーション {magicPotionPrice / 2}$　所持数：{playerData.nowHaveMagicPotion} <button className={`${styles.magicPotionSell} ${(playerData.nowHaveMagicPotion <= 0) ? styles.deactive : ''}`} onClick={magicPotionSellClick}>売る</button></li>
           <li className={styles.ItemBack} onClick={() => setModalView('')}>戻る</li>
         </ul>
       </div>
