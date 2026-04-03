@@ -2,16 +2,9 @@ import { create } from "zustand";
 import { gameSetting } from "../settings/gameSetting";
 
 
-const { 
-  playerStatus,
-  damageRange, 
-  criticalHitRate, 
-  sleepRate 
-} = gameSetting;
-
 export const damageCalculation = (attack, defence) => {
-  const maxDamage = attack * (1 + damageRange)
-  const minDamage = attack * (1 - damageRange)
+  const maxDamage = attack * (1 + gameSetting.damageRange)
+  const minDamage = attack * (1 - gameSetting.damageRange)
   const attackDamage = Math.floor(Math.random() * (maxDamage - minDamage) + minDamage)
   const damage = attackDamage - defence
   if(damage < 1) {
@@ -23,7 +16,7 @@ export const damageCalculation = (attack, defence) => {
 
 const useStore = create((set, get) => ({
 
-  playerData:playerStatus,
+  playerData:gameSetting.playerStatus,
   setPlayerData: (updater) => 
     set((state) => ({
       playerData: updater(state.playerData) 
@@ -91,14 +84,14 @@ const useStore = create((set, get) => ({
       const enemyDamageLog = damageCalculation(enemyData.attack, playerData.defence) * 2;
 
       if(sleepTrue && !sleepFirst) {
-        if(Math.random() < sleepRate) {
+        if(Math.random() < gameSetting.sleepRate) {
           insertLog(`<span style="color:red;"> ${enemyData.name} </span>は眠りから覚めた`)
           setIsSleep(false)
           return
         } 
       } else if(!sleepTrue) {
         
-        if(Math.random() < criticalHitRate) {
+        if(Math.random() < gameSetting.criticalHitRate) {
           setEnemyDamage(enemyDamageLog)
           insertLog(`<span style="color:red;"> ${enemyData.name}</span>の攻撃！クリティカルヒット<span style="color:blue;">${playerData.name} </span>に ${enemyDamage} のダメージ`)
         }else {

@@ -4,9 +4,6 @@ import useStore from '../../store/stateSettings';
 import { BattleButtons } from '../../system/battleButtons';
 
 const PlayerSection = () => {
-  const {
-    targetKilledNumber,
-  } = gameSetting;
 
   const { attackClick, fireClick } = BattleButtons();
 
@@ -57,7 +54,7 @@ const PlayerSection = () => {
         <div className={styles.killedNumbers}>
           討伐数:
           <div>{nowKilledNumber}</div>
-          <div>{targetKilledNumber}</div>
+          <div>{gameSetting.targetKilledNumber}</div>
         </div>
       </div>
       <ul className={styles.playerStatus}>

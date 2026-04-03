@@ -3,9 +3,6 @@ import useStore from "../store/stateSettings";
 import { damageCalculation } from "../store/stateSettings";
 
 export const BattleButtons = () => {
-  const {
-    criticalHitRate,
-  } = gameSetting;
 
   const { 
     setDefeat,
@@ -18,7 +15,7 @@ export const BattleButtons = () => {
 
   const attackClick = () => {
     let playerDamage = damageCalculation(playerData.attack, enemyData.defence);
-    if (Math.random() < criticalHitRate) {
+    if (Math.random() < gameSetting.criticalHitRate) {
       playerDamage *= 2;
       insertLog(`<span style="color:blue;"> ${playerData.name} </span>の攻撃！クリティカルヒット！<span style="color:red;"> ${enemyData.name} </span>に ${playerDamage} のダメージ`);
     } else {

@@ -10,21 +10,13 @@ export const ModalButtons = () => {
     stageNumber, setStageNumber, setNowKilledNumber, setNextStageButton
   } = useStore()
 
-  const {
-    magicPotionPrice,
-    potionPrice,
-    enemies,
-  } = gameSetting
-
-  
-
 
   const magicPotionBuyClick = () => {
-    const nowHaveMoneyLog = playerData.nowHaveMoney - magicPotionPrice;
+    const nowHaveMoneyLog = playerData.nowHaveMoney - gameSetting.magicPotionPrice;
 
     setPlayerData(prev => ({
       ...prev, 
-      nowHaveMoney: prev.nowHaveMoney - magicPotionPrice,
+      nowHaveMoney: prev.nowHaveMoney - gameSetting.magicPotionPrice,
       nowHaveMagicPotion: prev.nowHaveMagicPotion + 1,
       canUseMagicPotion:true,
     }
@@ -33,7 +25,7 @@ export const ModalButtons = () => {
   }
 
   const modalNextButtonClick = () => {
-    const newEnemiesData = enemies.filter(enemy => enemy.enemyStageNumber === stageNumber)
+    const newEnemiesData = gameSetting.enemies.filter(enemy => enemy.enemyStageNumber === stageNumber)
     const nextEnemy = newEnemiesData[Math.floor(Math.random() * newEnemiesData.length)]
     setEnemyData(nextEnemy)
     setMaxEnemyHp(nextEnemy.hp)
@@ -42,11 +34,11 @@ export const ModalButtons = () => {
   }
 
   const potionBuyClick = () => {
-    const nowHaveMoneyLog = playerData.nowHaveMoney - potionPrice
+    const nowHaveMoneyLog = playerData.nowHaveMoney - gameSetting.potionPrice
 
     setPlayerData(prev => ({
       ...prev, 
-      nowHaveMoney: prev.nowHaveMoney - potionPrice,
+      nowHaveMoney: prev.nowHaveMoney - gameSetting.potionPrice,
       nowHavePotion: prev.nowHavePotion + 1,
       canUsePotion: true,
     }))
@@ -56,11 +48,11 @@ export const ModalButtons = () => {
 
   const potionSellClick = () =>  {
     const nowHavePotionIndex = playerData.nowHavePotion - 1;
-    const nowHaveMoneyLog = playerData.nowHaveMoney + (potionPrice / 2)
+    const nowHaveMoneyLog = playerData.nowHaveMoney + (gameSetting.potionPrice / 2)
 
     setPlayerData(prev => ({
       ...prev, 
-      nowHaveMoney: prev.nowHaveMoney + (potionPrice / 2),
+      nowHaveMoney: prev.nowHaveMoney + (gameSetting.potionPrice / 2),
       nowHavePotion: prev.nowHavePotion - 1
     }))
 
@@ -69,11 +61,11 @@ export const ModalButtons = () => {
 
     const magicPotionSellClick = () => {
     const nowHaveMagicPotionIndex = playerData.nowHaveMagicPotion - 1;
-    const nowHaveMoneyLog = playerData.nowHaveMoney + (magicPotionPrice / 2)
+    const nowHaveMoneyLog = playerData.nowHaveMoney + (gameSetting.magicPotionPrice / 2)
 
     setPlayerData(prev => (
       {...prev, 
-        nowHaveMoney: prev.nowHaveMoney + (magicPotionPrice / 2),
+        nowHaveMoney: prev.nowHaveMoney + (gameSetting.magicPotionPrice / 2),
         nowHaveMagicPotion: prev.nowHaveMagicPotion - 1
       }
     ))
@@ -87,7 +79,7 @@ export const ModalButtons = () => {
     setNowKilledNumber(0)
 
 
-    const newEnemiesData = enemies.filter(enemy => enemy.enemyStageNumber === newStageNumber)
+    const newEnemiesData = gameSetting.enemies.filter(enemy => enemy.enemyStageNumber === newStageNumber)
     const nextEnemy = newEnemiesData[Math.floor(Math.random() * newEnemiesData.length)]
     setEnemyData(nextEnemy)
     setMaxEnemyHp(nextEnemy.hp)

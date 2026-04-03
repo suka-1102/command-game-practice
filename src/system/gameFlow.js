@@ -12,12 +12,6 @@ export const gameFlow = () => {
     stageNumber,nowKilledNumber, setNowKilledNumber, setNextStageButton
     
   } = useStore()
-  const {
-    firstNeedLevelUpPoint,
-    targetKilledNumber,
-    stageNumberIndex,
-    enemies,
-  } = gameSetting;
 
   const [plusPoint, setPlusPoint] = useState(0)
   const [modalTitleText, setModalTitleText] = useState("")
@@ -25,7 +19,7 @@ export const gameFlow = () => {
   
 
   useEffect(() => {
-    const enemiesDataFilter = enemies.filter(enemy => enemy.enemyStageNumber === 1)
+    const enemiesDataFilter = gameSetting.enemies.filter(enemy => enemy.enemyStageNumber === 1)
     const enemyDataFirst = enemiesDataFilter[Math.floor(Math.random() * enemiesDataFilter.length)]
 
     setEnemyData(enemyDataFirst)
@@ -50,7 +44,7 @@ export const gameFlow = () => {
         nowHaveExperiencePoint: prev.nowHaveExperiencePoint + getExperiencePoint,
       }))
       
-      const needLevelUpPoint = firstNeedLevelUpPoint + plusPoint;
+      const needLevelUpPoint = gameSetting.firstNeedLevelUpPoint + plusPoint;
       // level up
       const newPlayerHaveExperiencePoint = playerData.nowHaveExperiencePoint + enemyData.experiencePoint;
       if(newPlayerHaveExperiencePoint >= needLevelUpPoint) {
@@ -79,12 +73,12 @@ export const gameFlow = () => {
       }
       
    
-      if(nowKilledNumberDefine === targetKilledNumber) {
+      if(nowKilledNumberDefine === gameSetting.targetKilledNumber) {
         setClearGame(true)
         setModalTitleText(`おめでとう！ ステージ${stageNumber}！をクリア！`)
         setNextStageButton(true)
         const stageNumberLog = stageNumber;
-        if(stageNumberLog === stageNumberIndex) {
+        if(stageNumberLog === gameSetting.stageNumberIndex) {
            setModalTitleText(`おめでとう！すべてのゲームをクリアしたよ！`)
            setNextStageButton(false)
         }
