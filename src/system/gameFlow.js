@@ -5,11 +5,12 @@ import useStore from '../store/stateSettings';
 export const gameFlow = () => {
 
   const { 
-    victory, defeat,
+    victory, defeat, setClearGame,
     enemyData, setEnemyData,setEnemyHp,setMaxEnemyHp,
-    setIsPoison,
-    setIsSleep, 
-    playerData, setPlayerData 
+    setIsPoison,setIsSleep, 
+    playerData, setPlayerData ,
+    stageNumber,nowKilledNumber, setNowKilledNumber, setNextStageButton
+    
   } = useStore()
   const {
     firstNeedLevelUpPoint,
@@ -20,10 +21,6 @@ export const gameFlow = () => {
 
   const [plusPoint, setPlusPoint] = useState(0)
   const [modalTitleText, setModalTitleText] = useState("")
-  const [nowKilledNumber, setNowKilledNumber] = useState(0)
-  const [nextStageButton, setNextStageButton] = useState(false)
-  const [stageNumber, setStageNumber] = useState(1)
-  const [clearGame, setClearGame] = useState(false);
   
 
   useEffect(() => {
@@ -104,14 +101,14 @@ export const gameFlow = () => {
 
   return { 
     modalTitleText,
-    nowKilledNumber,
-    nextStageButton,
-    stageNumber,
-    clearGame,
-    setClearGame,
-    setStageNumber,
-    setNextStageButton,
-    setNowKilledNumber,
+    // nowKilledNumber,
+    // nextStageButton,
+    // stageNumber,
+    // clearGame,
+    // setClearGame,
+    // setStageNumber,
+    // setNextStageButton,
+    // setNowKilledNumber,
 
    }
 }

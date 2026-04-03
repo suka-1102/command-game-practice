@@ -8,35 +8,19 @@ import useStore from './store/stateSettings'
 
 const App = () => {
 
-  const { enemyData} = useStore()
+  const { enemyData, stageNumber} = useStore()
 
   const { 
     modalTitleText,
-    nowKilledNumber,
-    nextStageButton,
-    stageNumber,
-    clearGame,
-    setStageNumber,
-    setNowKilledNumber,
-    setClearGame,
-    setNextStageButton,
    } = gameFlow()
 
   const {
-    magicPotionBuyClick,
     potionBuyClick,
     potionSellClick,
     modalNextButtonClick,
     magicPotionSellClick,
     modalNextStageClick,
-  } = ModalButtons({
-    stageNumber,
-    setStageNumber,
-    setNowKilledNumber,
-    setClearGame,
-    setNextStageButton,
-
-  })
+  } = ModalButtons()
 
   const {
     potionClick,
@@ -57,14 +41,11 @@ const App = () => {
         />
 
         <PlayerSection
-          nowKilledNumber={nowKilledNumber}
         />
    
       </main>
       <Modal
         modalTitleText={modalTitleText}
-        clearGame={clearGame}
-        nextStageButton={nextStageButton}
         onModalNextButtonClick={modalNextButtonClick}
         onModalNextStageClick={modalNextStageClick}
         onPotionClick={potionClick}
@@ -72,7 +53,6 @@ const App = () => {
         onPoisonClick={poisonClick}
         onSleepClick={sleepClick}
         onPotionBuyClick={potionBuyClick}
-        onMagicPotionBuyClick={magicPotionBuyClick}
         onPotionSellClick={potionSellClick}
         onMagicPotionSellClick={magicPotionSellClick}
       />

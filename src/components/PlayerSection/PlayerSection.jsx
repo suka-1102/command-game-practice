@@ -3,9 +3,7 @@ import { gameSetting } from '../../settings/gameSetting';
 import useStore from '../../store/stateSettings';
 import { BattleButtons } from '../../system/battleButtons';
 
-const PlayerSection = ({
-  nowKilledNumber,
-}) => {
+const PlayerSection = () => {
   const {
     targetKilledNumber,
   } = gameSetting;
@@ -15,7 +13,8 @@ const PlayerSection = ({
   const { 
     victory, defeat, 
     playerData,
-    logs, setModalView
+    logs, setModalView,
+    nowKilledNumber 
   } = useStore() 
   
   

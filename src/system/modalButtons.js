@@ -1,15 +1,14 @@
 import { gameSetting } from "../settings/gameSetting";
 import useStore from "../store/stateSettings";
 
-export const ModalButtons = ({
-  stageNumber,
-  setStageNumber,
-  setNowKilledNumber,
-  setClearGame,
-  setNextStageButton,
-}) => {
+export const ModalButtons = () => {
 
-  const { setMaxEnemyHp, setVictory, setEnemyData, setEnemyHp,setPlayerData, playerData } = useStore()
+  const { 
+    setVictory, setClearGame,
+    setEnemyData, setEnemyHp, setMaxEnemyHp, 
+    setPlayerData, playerData,
+    stageNumber, setStageNumber, setNowKilledNumber, setNextStageButton
+  } = useStore()
 
   const {
     magicPotionPrice,
@@ -20,7 +19,7 @@ export const ModalButtons = ({
   
 
 
-    const magicPotionBuyClick = () => {
+  const magicPotionBuyClick = () => {
     const nowHaveMoneyLog = playerData.nowHaveMoney - magicPotionPrice;
 
     setPlayerData(prev => ({
@@ -83,9 +82,10 @@ export const ModalButtons = ({
   
 
   const modalNextStageClick = () => {
-    setStageNumber(prev => prev + 1)
-    setNowKilledNumber(0)
     const newStageNumber = stageNumber + 1;
+    setStageNumber(newStageNumber)
+    setNowKilledNumber(0)
+
 
     const newEnemiesData = enemies.filter(enemy => enemy.enemyStageNumber === newStageNumber)
     const nextEnemy = newEnemiesData[Math.floor(Math.random() * newEnemiesData.length)]

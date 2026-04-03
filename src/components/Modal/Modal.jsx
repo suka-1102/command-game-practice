@@ -1,11 +1,10 @@
 import styles from './Modal.module.scss';
 import { gameSetting } from '../../settings/gameSetting';
 import useStore from '../../store/stateSettings';
+import { ModalButtons } from '../../system/modalButtons';
 
 const Modal = ({
   modalTitleText,
-  clearGame,
-  nextStageButton,
   onModalNextButtonClick,
   onModalNextStageClick,
   onPotionClick,
@@ -13,7 +12,6 @@ const Modal = ({
   onPoisonClick,
   onSleepClick,
   onPotionBuyClick,
-  onMagicPotionBuyClick,
   onPotionSellClick,
   onMagicPotionSellClick,
 
@@ -23,7 +21,9 @@ const Modal = ({
     magicPotionPrice,
   } = gameSetting
 
-  const { victory, defeat, playerData,modalView, setModalView } = useStore()
+  const { magicPotionBuyClick } = ModalButtons()
+
+  const { victory, defeat,clearGame, playerData,modalView, setModalView,nextStageButton } = useStore()
   return (
     <>
       <div className={`${styles.mask} ${(victory) || (defeat) || (modalView === 'skill' || modalView === 'item') ? styles.active : ''}`}></div>
@@ -55,7 +55,7 @@ const Modal = ({
             所持金: {playerData.nowHaveMoney} ¥
           </div>
           <li className={styles.potionBuy} >ポーション　{potionPrice}＄ 　所持数：{playerData.nowHavePotion}<button className={`${styles.potionBuy} ${(playerData.nowHaveMoney < potionPrice) ? styles.deactive : ''}`} onClick={onPotionBuyClick}>買う</button></li>
-          <li className={styles.magicPotionBuy}>マジックポーション {magicPotionPrice}$ 所持数：{playerData.nowHaveMagicPotion}<button className={`${styles.magicPotionBuy} ${(playerData.nowHaveMoney < magicPotionPrice) ? styles.deactive : ''}`} onClick={onMagicPotionBuyClick}>買う</button></li>
+          <li className={styles.magicPotionBuy}>マジックポーション {magicPotionPrice}$ 所持数：{playerData.nowHaveMagicPotion}<button className={`${styles.magicPotionBuy} ${(playerData.nowHaveMoney < magicPotionPrice) ? styles.deactive : ''}`} onClick={magicPotionBuyClick}>買う</button></li>
           <li className={styles.ItemBack} onClick={() => setModalView('')}>戻る</li>
         </ul>
         <ul className={`${styles.itemListSell} ${(modalView !== 'sell') ? styles.none : ''}`}>

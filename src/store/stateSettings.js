@@ -45,11 +45,24 @@ const useStore = create((set, get) => ({
   defeat: false,
   setDefeat: (status) => set({ defeat: status}),
 
+  clearGame: false,
+  setClearGame: (status) => set({ clearGame: status}),
+
   isSleep: false,
   setIsSleep: (v) => set({ isSleep: v }),
 
   isPoison: false,
   setIsPoison: (v) => set({ isPoison: v }),
+
+  stageNumber: 1,
+  setStageNumber: (number) => set({ stageNumber: number }),
+
+  nowKilledNumber: 0,
+  setNowKilledNumber: (number) => set({ nowKilledNumber: number }),
+
+  nextStageButton: false,
+  setNextStageButton: (status) => set({ nextStageButton: status }),
+
 
   enemyDamage: 0,
   setEnemyDamage: (damage) => set({ enemyDamage: damage }),
