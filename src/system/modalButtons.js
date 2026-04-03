@@ -1,22 +1,7 @@
 import { gameSetting } from "../settings/gameSetting";
+import useStore from "../store/stateSettings";
 
 export const ModalButtons = ({
-  // insertLog,
-  // damageProcess,
-  // isSleep,
-  // setIsSleep,
-  // enemyData,
-  // enemyDamage,
-  // setIsPoison,
-  // setModalView,
-  // enemyHp,
-  // setDefeat,
-  setEnemyHp,
-  setPlayerData,
-  playerData,
-  setVictory,
-  setEnemyData,
-  setMaxEnemyHp,
   stageNumber,
   setStageNumber,
   setNowKilledNumber,
@@ -24,8 +9,9 @@ export const ModalButtons = ({
   setNextStageButton,
 }) => {
 
+  const { setMaxEnemyHp, setVictory, setEnemyData, setEnemyHp,setPlayerData, playerData } = useStore()
+
   const {
-    // criticalHitRate,
     magicPotionPrice,
     potionPrice,
     enemies,
@@ -116,13 +102,6 @@ export const ModalButtons = ({
 
 
   return {
-    // attackClick,
-    // fireClick,
-    // potionClick,
-    // poisonClick,
-    // sleepClick,
-    // magicpotionClick,
-
     magicPotionBuyClick,
     modalNextButtonClick,
     potionBuyClick,

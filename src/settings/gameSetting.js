@@ -1,6 +1,6 @@
 export const gameSetting = {
   damageRange: 0.2,
-  criticalHitRate: 0.1,
+  criticalHitRate: 0.4,
   targetKilledNumber: 3,
   sleepRate: 0.3,
   firstNeedLevelUpPoint: 20,

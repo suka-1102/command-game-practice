@@ -1,16 +1,22 @@
 import styles from './PlayerSection.module.scss';
+import { gameSetting } from '../../settings/gameSetting';
+import useStore from '../../store/stateSettings';
+import { BattleButtons } from '../../system/battleButtons';
 
 const PlayerSection = ({
-  playerData,
   nowKilledNumber,
-  targetKilledNumber,
-  logs,
-  victory,
-  defeat,
-  onAttackClick,
-  onFireClick,
-  onSetModalView,
 }) => {
+  const {
+    targetKilledNumber,
+  } = gameSetting;
+
+  const { attackClick, fireClick } = BattleButtons();
+
+  const { 
+    victory, defeat, 
+    playerData,
+    logs, setModalView
+  } = useStore() 
   
   
   return (
@@ -71,16 +77,16 @@ const PlayerSection = ({
 
       <ul className={styles.attackButtonSelect}>
         <li>
-          <button className={`${styles.attack} ${(victory || defeat) ? styles.deactive : ''}`} onClick={onAttackClick}>攻撃する</button>
+          <button className={`${styles.attack} ${(victory || defeat) ? styles.deactive : ''}`} onClick={attackClick}>攻撃する</button>
         </li>
         <li>
-          <button className={`${styles.fire} ${((victory || defeat) || !playerData.canFire) ? styles.deactive : ''}`} onClick={onFireClick}>ファイア</button>
+          <button className={`${styles.fire} ${((victory || defeat) || !playerData.canFire) ? styles.deactive : ''}`} onClick={fireClick}>ファイア</button>
         </li>
         <li>
-          <button className={`${styles.skill} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => onSetModalView('skill')}>スキル</button>
+          <button className={`${styles.skill} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => setModalView('skill')}>スキル</button>
         </li>
         <li>
-          <button className={`${styles.item} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => onSetModalView('item')}>アイテム</button>
+          <button className={`${styles.item} ${(victory || defeat) ? styles.deactive : ''}`} onClick={() => setModalView('item')}>アイテム</button>
         </li>
       </ul> 
     </section>

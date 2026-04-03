@@ -1,0 +1,16 @@
+[33m116c24e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreduce_props[m[33m)[m HEAD@{0}: reset: moving to HEAD~
+[33m7842fe3[m[33m ([m[1;31morigin/reduce_props[m[33m)[m HEAD@{1}: checkout: moving from master to reduce_props
+[33m35fa797[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{2}: checkout: moving from e5d420438d3c973f26df6a9f9c15bd3a73262cfd to master
+[33me5d4204[m HEAD@{3}: commit: reduce_props_battleLogic
+[33m31f6f34[m HEAD@{4}: commit: merge_Test
+[33m23cf8ba[m HEAD@{5}: commit (merge): Merge commit '7842fe3194941ae67f6c1b07794305286cc36ba5' into HEAD
+[33m35fa797[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{6}: checkout: moving from 7842fe3194941ae67f6c1b07794305286cc36ba5 to 35fa7975689c0c85821d7878920d6fdca0a98e92
+[33m7842fe3[m[33m ([m[1;31morigin/reduce_props[m[33m)[m HEAD@{7}: reset: moving to 7842fe3194941ae67f6c1b07794305286cc36ba5
+[33m35fa797[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{8}: checkout: moving from reduce_props to 35fa7975689c0c85821d7878920d6fdca0a98e92
+[33m7842fe3[m[33m ([m[1;31morigin/reduce_props[m[33m)[m HEAD@{9}: commit: props_reduce1
+[33m116c24e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreduce_props[m[33m)[m HEAD@{10}: commit: create BattleButtons
+[33mdb99245[m HEAD@{11}: reset: moving to HEAD~
+[33m35fa797[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{12}: checkout: moving from master to reduce_props
+[33m35fa797[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{13}: commit: create BattleButtons
+[33mdb99245[m HEAD@{14}: commit: stateの削除
+[33me2a74ea[m HEAD@{15}: commit (initial): 初期

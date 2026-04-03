@@ -1,25 +1,16 @@
 import { useState, useEffect } from 'react';
 import { gameSetting } from '../settings/gameSetting';
+import useStore from '../store/stateSettings';
 
-export const gameFlow = ({
-  enemyData,
-  playerData,
-  victory,
-  defeat,
-  setEnemyData,
-  setMaxEnemyHp,
-  setEnemyHp,
-  setIsPoison,
-  setIsSleep,
-  setPlayerData,
-  // stageNumber,
-  // setClearGame,
-  // setNextStageButton,
-  // setPlusPoint,
-  // nowKilledNumber,
-  // plusPoint,
-  // setNowKilledNumber,  
-}) => {
+export const gameFlow = () => {
+
+  const { 
+    victory, defeat,
+    enemyData, setEnemyData,setEnemyHp,setMaxEnemyHp,
+    setIsPoison,
+    setIsSleep, 
+    playerData, setPlayerData 
+  } = useStore()
   const {
     firstNeedLevelUpPoint,
     targetKilledNumber,
@@ -33,6 +24,7 @@ export const gameFlow = ({
   const [nextStageButton, setNextStageButton] = useState(false)
   const [stageNumber, setStageNumber] = useState(1)
   const [clearGame, setClearGame] = useState(false);
+  
 
   useEffect(() => {
     const enemiesDataFilter = enemies.filter(enemy => enemy.enemyStageNumber === 1)
