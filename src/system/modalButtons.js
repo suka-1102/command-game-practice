@@ -6,13 +6,12 @@ export const ModalButtons = () => {
   const { 
     setVictory, setClearGame,
     setEnemyData, setEnemyHp, setMaxEnemyHp, 
-    setPlayerData, playerData,
+    setPlayerData,
     stageNumber, setStageNumber, setNowKilledNumber, setNextStageButton
   } = useStore()
 
 
   const magicPotionBuyClick = () => {
-    const nowHaveMoneyLog = playerData.nowHaveMoney - gameSetting.magicPotionPrice;
 
     setPlayerData(prev => ({
       ...prev, 
@@ -34,7 +33,6 @@ export const ModalButtons = () => {
   }
 
   const potionBuyClick = () => {
-    const nowHaveMoneyLog = playerData.nowHaveMoney - gameSetting.potionPrice
 
     setPlayerData(prev => ({
       ...prev, 
@@ -47,8 +45,6 @@ export const ModalButtons = () => {
 
 
   const potionSellClick = () =>  {
-    const nowHavePotionIndex = playerData.nowHavePotion - 1;
-    const nowHaveMoneyLog = playerData.nowHaveMoney + (gameSetting.potionPrice / 2)
 
     setPlayerData(prev => ({
       ...prev, 
@@ -60,8 +56,6 @@ export const ModalButtons = () => {
   }
 
     const magicPotionSellClick = () => {
-    const nowHaveMagicPotionIndex = playerData.nowHaveMagicPotion - 1;
-    const nowHaveMoneyLog = playerData.nowHaveMoney + (gameSetting.magicPotionPrice / 2)
 
     setPlayerData(prev => (
       {...prev, 

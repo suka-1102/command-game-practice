@@ -5,7 +5,7 @@ import { ModalButtons } from '../../system/modalButtons';
 import { BattleButtons } from '../../system/battleButtons';
 
 const Modal = ({
-  modalTitleText,
+  modalTitleText
 }) => {
 
 
@@ -29,7 +29,7 @@ const Modal = ({
   const { 
     victory, defeat,clearGame, 
     playerData,
-    modalView, setModalView,nextStageButton 
+    modalView, setModalView,nextStageButton, 
   } = useStore()
   return (
     <>
@@ -58,17 +58,17 @@ const Modal = ({
         </ul>
 
         <ul className={`${styles.itemListsBuy} ${(modalView !== 'buy') ? styles.none : ''}`}>
-          <div className={styles.playerMoney}>
+          <li className={styles.playerMoney}>
             所持金: {playerData.nowHaveMoney} ¥
-          </div>
+          </li>
           <li className={styles.potionBuy} >ポーション　{gameSetting.potionPrice}＄ 　所持数：{playerData.nowHavePotion}<button className={`${styles.potionBuy} ${(playerData.nowHaveMoney < gameSetting.potionPrice) ? styles.deactive : ''}`} onClick={potionBuyClick}>買う</button></li>
           <li className={styles.magicPotionBuy}>マジックポーション {gameSetting.magicPotionPrice}$ 所持数：{playerData.nowHaveMagicPotion}<button className={`${styles.magicPotionBuy} ${(playerData.nowHaveMoney < gameSetting.magicPotionPrice) ? styles.deactive : ''}`} onClick={magicPotionBuyClick}>買う</button></li>
           <li className={styles.ItemBack} onClick={() => setModalView('')}>戻る</li>
         </ul>
         <ul className={`${styles.itemListSell} ${(modalView !== 'sell') ? styles.none : ''}`}>
-          <div className={styles.playerMoney}>
+          <li className={styles.playerMoney}>
             所持金: {playerData.nowHaveMoney} ¥
-          </div>
+          </li>
           <li className={styles.potionBuy} >ポーション {gameSetting.potionPrice / 2}＄　所持数：{playerData.nowHavePotion} <button className={`${styles.potionSell} ${(playerData.nowHavePotion <= 0) ? styles.deactive : ''}`} onClick={potionSellClick}>売る</button></li>
           <li className={styles.magicPotionBuy}>マジックポーション {gameSetting.magicPotionPrice / 2}$　所持数：{playerData.nowHaveMagicPotion} <button className={`${styles.magicPotionSell} ${(playerData.nowHaveMagicPotion <= 0) ? styles.deactive : ''}`} onClick={magicPotionSellClick}>売る</button></li>
           <li className={styles.ItemBack} onClick={() => setModalView('')}>戻る</li>

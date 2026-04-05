@@ -20,7 +20,7 @@ const useStore = create((set, get) => ({
   setPlayerData: (updater) => 
     set((state) => ({
       playerData: updater(state.playerData) 
-    })),
+  })),
 
   maxEnemyHp: undefined, 
   setMaxEnemyHp: (newHp) => set({ maxEnemyHp: newHp }),
@@ -56,12 +56,11 @@ const useStore = create((set, get) => ({
   nextStageButton: false,
   setNextStageButton: (status) => set({ nextStageButton: status }),
 
-
   enemyDamage: 0,
   setEnemyDamage: (damage) => set({ enemyDamage: damage }),
 
-  modalView: 0,
-  setModalView: (damage) => set({ modalView: damage }),
+  modalView: "",
+  setModalView: (status) => set({ modalView: status }),
 
   logs: [],
   insertLog: (text) => set((state) => {
@@ -82,7 +81,6 @@ const useStore = create((set, get) => ({
     if (enemyHp > 0) {
       setEnemyDamage(damageCalculation(enemyData.attack, playerData.defence))
       const enemyDamageLog = damageCalculation(enemyData.attack, playerData.defence) * 2;
-
       if(sleepTrue && !sleepFirst) {
         if(Math.random() < gameSetting.sleepRate) {
           insertLog(`<span style="color:red;"> ${enemyData.name} </span>は眠りから覚めた`)

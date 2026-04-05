@@ -10,7 +10,9 @@ const App = () => {
 
   const { 
     modalTitleText,
+    
    } = gameFlow()
+   
 
 
   if (!enemyData) {

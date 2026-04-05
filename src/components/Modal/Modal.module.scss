@@ -93,4 +93,11 @@
       display: none;
     }
   }
+  .itemListsBuy,
+  .itemListSell {
+    li:first-child {
+      border: none;
+      padding: 0;
+    }
+  }
 }
