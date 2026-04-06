@@ -79,8 +79,9 @@ const useStore = create((set, get) => ({
     } = get();
     let nextEnemyHp = Math.max(0, enemyHp - damage);
     if (enemyHp > 0) {
-      setEnemyDamage(damageCalculation(enemyData.attack, playerData.defence))
-      const enemyDamageLog = damageCalculation(enemyData.attack, playerData.defence) * 2;
+      const enemyDamagesetting = damageCalculation(enemyData.attack, playerData.defence)
+      setEnemyDamage(enemyDamagesetting)
+      const enemyDamageCritical = damageCalculation(enemyData.attack, playerData.defence) * 2;
       if(sleepTrue && !sleepFirst) {
         if(Math.random() < gameSetting.sleepRate) {
           insertLog(`<span style="color:red;"> ${enemyData.name} </span>は眠りから覚めた`)
@@ -90,10 +91,34 @@ const useStore = create((set, get) => ({
       } else if(!sleepTrue) {
         
         if(Math.random() < gameSetting.criticalHitRate) {
-          setEnemyDamage(enemyDamageLog)
-          insertLog(`<span style="color:red;"> ${enemyData.name}</span>の攻撃！クリティカルヒット<span style="color:blue;">${playerData.name} </span>に ${enemyDamage} のダメージ`)
+          setEnemyDamage(enemyDamageCritical)
+          insertLog(`<span style="color:red;"> ${enemyData.name}</span>の攻撃！クリティカルヒット<span style="color:blue;">${playerData.name} </span>に ${enemyDamageCritical} のダメージ`)
+          const nextPlayerHp = playerData.hp - enemyDamageCritical
+
+          setPlayerData(prev => ({
+            ...prev, hp: nextPlayerHp,
+          }))
+
+          if(nextPlayerHp <= 0) {
+            setDefeat(true)
+            setPlayerData(prev => ({
+              ...prev, hp: 0,
+            }))
+          }
         }else {
-          insertLog(`<span style="color:red;"> ${enemyData.name} </span>の攻撃！<span style="color:blue;"> ${playerData.name} </span>に ${enemyDamage} のダメージ`)
+          insertLog(`<span style="color:red;"> ${enemyData.name} </span>の攻撃！<span style="color:blue;"> ${playerData.name} </span>に ${enemyDamagesetting} のダメージ`)
+          const nextPlayerHp = playerData.hp - enemyDamagesetting
+
+          setPlayerData(prev => ({
+            ...prev, hp: nextPlayerHp,
+          }))
+
+          if(nextPlayerHp <= 0) {
+            setDefeat(true)
+            setPlayerData(prev => ({
+              ...prev, hp: 0,
+            }))
+          }
         }
       } 
       if (isSleep) {
@@ -111,18 +136,7 @@ const useStore = create((set, get) => ({
         setEnemyHp(nextEnemyHp)
         insertLog(`<span style="color:red;"> ${enemyData.name} </span>は毒に侵されている！ ${poisonDamage} のダメージ`)
       }
-      const nextPlayerHp = playerData.hp - enemyDamage
-
-      setPlayerData(prev => ({
-        ...prev, hp: nextPlayerHp,
-      }))
-
-      if(nextPlayerHp <= 0) {
-        setDefeat(true)
-        setPlayerData(prev => ({
-          ...prev, hp: 0,
-        }))
-      }
+    
     } else {
       setVictory(true)
       setEnemyHp(0)
