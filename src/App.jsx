@@ -1,4 +1,4 @@
-import { gameFlow } from './system/gameFlow'
+import { useGameFlow } from './system/gameFlow'
 import Modal from './components/Modal/Modal'
 import PlayerSection from './components/PlayerSection/PlayerSection'
 import EnemySection from './components/EnemySection/EnemySection'
@@ -11,7 +11,7 @@ const App = () => {
   const { 
     modalTitleText,
     
-   } = gameFlow()
+   } = useGameFlow()
    
 
 

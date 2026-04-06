@@ -1,11 +1,11 @@
 import styles from './PlayerSection.module.scss';
 import { gameSetting } from '../../settings/gameSetting';
 import useStore from '../../store/stateSettings';
-import { BattleButtons } from '../../system/battleButtons';
+import { useBattleButtons } from '../../system/battleButtons';
 
 const PlayerSection = () => {
 
-  const { attackClick, fireClick } = BattleButtons();
+  const { attackClick, fireClick } = useBattleButtons();
 
   const { 
     victory, defeat, 

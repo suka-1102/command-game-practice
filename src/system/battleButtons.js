@@ -2,7 +2,7 @@ import { gameSetting } from "../settings/gameSetting";
 import useStore from "../store/stateSettings";
 import { damageCalculation } from "../store/stateSettings";
 
-export const BattleButtons = () => {
+export const useBattleButtons = () => {
 
   const { 
     setDefeat,

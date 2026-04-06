@@ -1,8 +1,8 @@
 import styles from './Modal.module.scss';
 import { gameSetting } from '../../settings/gameSetting';
 import useStore from '../../store/stateSettings';
-import { ModalButtons } from '../../system/modalButtons';
-import { BattleButtons } from '../../system/battleButtons';
+import { useModalButtons } from '../../system/modalButtons';
+import { useBattleButtons } from '../../system/battleButtons';
 
 const Modal = ({
   modalTitleText
@@ -17,14 +17,14 @@ const Modal = ({
     modalNextStageClick,
     magicPotionSellClick
 
-  } = ModalButtons()
+  } = useModalButtons()
 
   const {
     potionClick,
     magicPotionClick,
     poisonClick,
     sleepClick
-  } = BattleButtons()
+  } = useBattleButtons()
 
   const { 
     victory, defeat,clearGame, 

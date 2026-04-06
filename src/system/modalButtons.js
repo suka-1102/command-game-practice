@@ -1,7 +1,7 @@
 import { gameSetting } from "../settings/gameSetting";
 import useStore from "../store/stateSettings";
 
-export const ModalButtons = () => {
+export const useModalButtons = () => {
 
   const { 
     setVictory, setClearGame,

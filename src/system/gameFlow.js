@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { gameSetting } from '../settings/gameSetting';
 import useStore from '../store/stateSettings';
 
-export const gameFlow = () => {
+export const useGameFlow = () => {
 
   const [plusPoint, setPlusPoint] = useState(0)
   const [modalTitleText, setModalTitleText] = useState("")
