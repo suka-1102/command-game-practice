@@ -1,4 +1,4 @@
-import { useGameFlow } from './system/gameFlow'
+import { useInitGame, useBattleResult } from './system/gameFlow'
 import Modal from './components/Modal/Modal'
 import PlayerSection from './components/PlayerSection/PlayerSection'
 import EnemySection from './components/EnemySection/EnemySection'
@@ -9,9 +9,10 @@ const App = () => {
   const { enemyData, stageNumber} = useStore()
 
   const { 
-    modalTitleText,
-    
-   } = useGameFlow()
+    modalTitleText,  
+  } = useBattleResult()
+
+  useInitGame()
    
 
 

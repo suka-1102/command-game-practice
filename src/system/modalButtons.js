@@ -55,15 +55,13 @@ export const useModalButtons = () => {
 
   }
 
-    const magicPotionSellClick = () => {
-
+  const magicPotionSellClick = () => {
     setPlayerData(prev => (
       {...prev, 
         nowHaveMoney: prev.nowHaveMoney + (gameSetting.magicPotionPrice / 2),
         nowHaveMagicPotion: prev.nowHaveMagicPotion - 1
       }
     ))
-
   }
   
 

@@ -22,12 +22,12 @@ const PlayerSection = () => {
       <div className={styles.hpGauge}>
         <div 
           className={`${styles.hpGaugeValue} ${
-                      (playerData.hp / playerData.maxPlayerHp) * 100 <= 25 
-                        ? styles.red 
-                        : (playerData.hp / playerData.maxPlayerHp) * 100 <= 50 
-                          ? styles.orange 
-                          : ""
-                    }`}
+            (playerData.hp / playerData.maxPlayerHp) * 100 <= 25 
+              ? styles.red 
+              : (playerData.hp / playerData.maxPlayerHp) * 100 <= 50 
+                ? styles.orange 
+                : ""
+          }`}
           style={{
             width: `${((playerData.hp / playerData.maxPlayerHp) * 100)}%`
           }}
